@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Mybatis 原理分析 | Zpeng</title>
+    <meta name="generator" content="VuePress 1.4.1">
+    <link rel="icon" href="https://infinitypro-img.infinitynewtab.com/custom-icon/8001de1jd3n68lbfnxxt564xvb0vl5.png?imageMogr2/thumbnail/240x/format/webp/blur/1x0/quality/100|imageslim">
+    <script language="javascript" type="text/javascript" src="https://cdn.staticfile.org/jquery/1.7.2/jquery.min.js"></script>
+    <script language="javascript" type="text/javascript" src="/vuepressblog/js/MouseClickEffect.js"></script>
+    <meta name="description" content="可以分享的不仅仅只有技术！">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <link rel="preload" href="/vuepressblog/assets/css/0.styles.7ed2eb0c.css" as="style"><link rel="preload" href="/vuepressblog/assets/js/app.7e150cda.js" as="script"><link rel="preload" href="/vuepressblog/assets/js/5.77d6a875.js" as="script"><link rel="preload" href="/vuepressblog/assets/js/1.09091223.js" as="script"><link rel="preload" href="/vuepressblog/assets/js/2.aca3c302.js" as="script"><link rel="preload" href="/vuepressblog/assets/js/27.75f1fdf2.js" as="script"><link rel="preload" href="/vuepressblog/assets/js/19.d519ea0a.js" as="script"><link rel="prefetch" href="/vuepressblog/assets/js/10.32dcd315.js"><link rel="prefetch" href="/vuepressblog/assets/js/11.9163a9d8.js"><link rel="prefetch" href="/vuepressblog/assets/js/12.5bb27aab.js"><link rel="prefetch" href="/vuepressblog/assets/js/13.32e29e7c.js"><link rel="prefetch" href="/vuepressblog/assets/js/14.e55b7723.js"><link rel="prefetch" href="/vuepressblog/assets/js/15.c48607a3.js"><link rel="prefetch" href="/vuepressblog/assets/js/16.13390870.js"><link rel="prefetch" href="/vuepressblog/assets/js/17.a9804fd8.js"><link rel="prefetch" href="/vuepressblog/assets/js/18.fb69bfc4.js"><link rel="prefetch" href="/vuepressblog/assets/js/20.dbd1ca3b.js"><link rel="prefetch" href="/vuepressblog/assets/js/21.ee3561c0.js"><link rel="prefetch" href="/vuepressblog/assets/js/22.c22d9c1f.js"><link rel="prefetch" href="/vuepressblog/assets/js/23.723547f5.js"><link rel="prefetch" href="/vuepressblog/assets/js/24.943528ad.js"><link rel="prefetch" href="/vuepressblog/assets/js/25.8e9479ce.js"><link rel="prefetch" href="/vuepressblog/assets/js/26.74984b33.js"><link rel="prefetch" href="/vuepressblog/assets/js/28.1b6276c0.js"><link rel="prefetch" href="/vuepressblog/assets/js/29.05639df4.js"><link rel="prefetch" href="/vuepressblog/assets/js/30.2681940d.js"><link rel="prefetch" href="/vuepressblog/assets/js/31.f9efb1b1.js"><link rel="prefetch" href="/vuepressblog/assets/js/32.a0d9a399.js"><link rel="prefetch" href="/vuepressblog/assets/js/33.6cb36c5d.js"><link rel="prefetch" href="/vuepressblog/assets/js/34.f0a698fd.js"><link rel="prefetch" href="/vuepressblog/assets/js/35.0e326130.js"><link rel="prefetch" href="/vuepressblog/assets/js/36.b2b3e253.js"><link rel="prefetch" href="/vuepressblog/assets/js/37.dd62db9e.js"><link rel="prefetch" href="/vuepressblog/assets/js/38.913cb853.js"><link rel="prefetch" href="/vuepressblog/assets/js/39.da58299e.js"><link rel="prefetch" href="/vuepressblog/assets/js/40.9e9dbe74.js"><link rel="prefetch" href="/vuepressblog/assets/js/41.1e5d174b.js"><link rel="prefetch" href="/vuepressblog/assets/js/42.98e5b36e.js"><link rel="prefetch" href="/vuepressblog/assets/js/43.e9700734.js"><link rel="prefetch" href="/vuepressblog/assets/js/44.b0a52867.js"><link rel="prefetch" href="/vuepressblog/assets/js/45.917fb9ad.js"><link rel="prefetch" href="/vuepressblog/assets/js/46.7ae1c785.js"><link rel="prefetch" href="/vuepressblog/assets/js/47.7fcebcc8.js"><link rel="prefetch" href="/vuepressblog/assets/js/48.93cbe66a.js"><link rel="prefetch" href="/vuepressblog/assets/js/49.1f223744.js"><link rel="prefetch" href="/vuepressblog/assets/js/50.ba92012e.js"><link rel="prefetch" href="/vuepressblog/assets/js/51.aca7b354.js"><link rel="prefetch" href="/vuepressblog/assets/js/52.0f5d4489.js"><link rel="prefetch" href="/vuepressblog/assets/js/53.226d4ff8.js"><link rel="prefetch" href="/vuepressblog/assets/js/54.1043b0ae.js"><link rel="prefetch" href="/vuepressblog/assets/js/55.92853640.js"><link rel="prefetch" href="/vuepressblog/assets/js/56.82cc33e1.js"><link rel="prefetch" href="/vuepressblog/assets/js/57.745ad1d3.js"><link rel="prefetch" href="/vuepressblog/assets/js/58.b7ff50c2.js"><link rel="prefetch" href="/vuepressblog/assets/js/59.7d8351c4.js"><link rel="prefetch" href="/vuepressblog/assets/js/6.d725240a.js"><link rel="prefetch" href="/vuepressblog/assets/js/60.2aebe209.js"><link rel="prefetch" href="/vuepressblog/assets/js/61.9430581b.js"><link rel="prefetch" href="/vuepressblog/assets/js/62.7044ccf3.js"><link rel="prefetch" href="/vuepressblog/assets/js/63.3c095a98.js"><link rel="prefetch" href="/vuepressblog/assets/js/64.346faedd.js"><link rel="prefetch" href="/vuepressblog/assets/js/65.afbf1f2a.js"><link rel="prefetch" href="/vuepressblog/assets/js/66.17696ab9.js"><link rel="prefetch" href="/vuepressblog/assets/js/7.805ae2fb.js"><link rel="prefetch" href="/vuepressblog/assets/js/8.13496340.js"><link rel="prefetch" href="/vuepressblog/assets/js/9.8e8e790b.js"><link rel="prefetch" href="/vuepressblog/assets/js/vendors~flowchart.e4db18a3.js">
+    <link rel="stylesheet" href="/vuepressblog/assets/css/0.styles.7ed2eb0c.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div><div class="theme-container" data-v-0b87bb44><div data-v-0b87bb44><div id="loader-wrapper" class="loading-wrapper" data-v-4b73742e data-v-0b87bb44 data-v-0b87bb44><div class="loader-main" data-v-4b73742e><div data-v-4b73742e></div><div data-v-4b73742e></div><div data-v-4b73742e></div><div data-v-4b73742e></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-73c95a87 data-v-0b87bb44 data-v-0b87bb44><h3 class="title" style="display:none;" data-v-73c95a87 data-v-73c95a87>Zpeng</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-73c95a87 data-v-73c95a87><input type="password" value="" data-v-73c95a87> <span data-v-73c95a87>Konck! Knock!</span> <button data-v-73c95a87>OK</button></label> <div class="footer" style="display:none;" data-v-73c95a87 data-v-73c95a87><span data-v-73c95a87><i class="iconfont reco-theme" data-v-73c95a87></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-73c95a87>vuePress-theme-reco</a></span> <span data-v-73c95a87><i class="iconfont reco-copyright" data-v-73c95a87></i> <a data-v-73c95a87><span data-v-73c95a87>Zpeng</span>
+            
+          <!---->
+          2020
+        </a></span></div></div> <div class="hide" data-v-0b87bb44><header class="navbar" data-v-0b87bb44><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/vuepressblog/" class="home-link router-link-active"><img src="/vuepressblog/vuepress/head-fish.jpg" alt="Zpeng" class="logo"> <span class="site-name">Zpeng</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/vuepressblog/index.html" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/面试题/" class="nav-link"><i class="iconfont undefined"></i>
+  面试题
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/后端/" class="nav-link"><i class="iconfont undefined"></i>
+  后端
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/工具/" class="nav-link"><i class="iconfont undefined"></i>
+  工具
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/数据库/" class="nav-link"><i class="iconfont undefined"></i>
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/分享/" class="nav-link"><i class="iconfont undefined"></i>
+  分享
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/娱乐/" class="nav-link"><i class="iconfont undefined"></i>
+  娱乐
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/前端/" class="nav-link"><i class="iconfont undefined"></i>
+  前端
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/myblog/" class="nav-link"><i class="iconfont undefined"></i>
+  myblog
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/算法/" class="nav-link"><i class="iconfont undefined"></i>
+  算法
+</a></li></ul></div></div><div class="nav-item"><a href="/vuepressblog/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-document"></i>
+      其它
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>Github</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://github.com/zhangpengpeng69" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  My Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></li><li class="dropdown-item"><h4>Others</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://www.zhangpeng.fun/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  halo blog
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-subitem"><a href="https://zpengit.github.io/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  hexo blog
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-subitem"><a href="https://github.com/zhangpengpeng69/ZPeng-s-Blog" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  github blog
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-subitem"><a href="https://zhangpengpeng69.github.io/vuepressblog/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  vuepress blog
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></li></ul></div></div><div class="nav-item"><a href="/vuepressblog/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间线
+</a></div><div class="nav-item"><a href="/vuepressblog/about/" class="nav-link"><i class="iconfont reco-message"></i>
+  关于我
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-0b87bb44></div> <aside class="sidebar" data-v-0b87bb44><div class="personal-info-wrapper" data-v-7e653f02><img src="/vuepressblog/vuepress/head-fish.jpg" alt="author-avatar" class="personal-img" data-v-7e653f02> <h3 class="name" data-v-7e653f02>
+    Zpeng
+  </h3> <div class="num" data-v-7e653f02><div data-v-7e653f02><h3 data-v-7e653f02>36</h3> <h6 data-v-7e653f02>文章</h6></div> <div data-v-7e653f02><h3 data-v-7e653f02>33</h3> <h6 data-v-7e653f02>标签</h6></div></div> <hr data-v-7e653f02></div> <nav class="nav-links"><div class="nav-item"><a href="/vuepressblog/index.html" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/面试题/" class="nav-link"><i class="iconfont undefined"></i>
+  面试题
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/后端/" class="nav-link"><i class="iconfont undefined"></i>
+  后端
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/工具/" class="nav-link"><i class="iconfont undefined"></i>
+  工具
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/数据库/" class="nav-link"><i class="iconfont undefined"></i>
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/分享/" class="nav-link"><i class="iconfont undefined"></i>
+  分享
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/娱乐/" class="nav-link"><i class="iconfont undefined"></i>
+  娱乐
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/前端/" class="nav-link"><i class="iconfont undefined"></i>
+  前端
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/myblog/" class="nav-link"><i class="iconfont undefined"></i>
+  myblog
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/算法/" class="nav-link"><i class="iconfont undefined"></i>
+  算法
+</a></li></ul></div></div><div class="nav-item"><a href="/vuepressblog/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-document"></i>
+      其它
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>Github</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://github.com/zhangpengpeng69" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  My Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></li><li class="dropdown-item"><h4>Others</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://www.zhangpeng.fun/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  halo blog
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-subitem"><a href="https://zpengit.github.io/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  hexo blog
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-subitem"><a href="https://github.com/zhangpengpeng69/ZPeng-s-Blog" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  github blog
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-subitem"><a href="https://zhangpengpeng69.github.io/vuepressblog/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  vuepress blog
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></li></ul></div></div><div class="nav-item"><a href="/vuepressblog/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间线
+</a></div><div class="nav-item"><a href="/vuepressblog/about/" class="nav-link"><i class="iconfont reco-message"></i>
+  关于我
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Mybatis 原理分析</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/vuepressblog/views/java/Mybatis%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90.html#_1-mybatis-框架核心基础" class="sidebar-link">1.MYBATIS 框架核心基础</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vuepressblog/views/java/Mybatis%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90.html#_1-1-mybatis-架构分析" class="sidebar-link">1.1.MYBATIS 架构分析</a></li><li class="sidebar-sub-header"><a href="/vuepressblog/views/java/Mybatis%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90.html#_1-2-mybatis-环境配置实践" class="sidebar-link">1.2.MYBATIS 环境配置实践</a></li><li class="sidebar-sub-header"><a href="/vuepressblog/views/java/Mybatis%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90.html#_1-3-mybatis业务应用快速实践" class="sidebar-link">1.3.MYBATIS业务应用快速实践</a></li><li class="sidebar-sub-header"><a href="/vuepressblog/views/java/Mybatis%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90.html#_1-4-mybatis-应用原理进阶分析" class="sidebar-link">1.4.MYBATIS 应用原理进阶分析</a></li><li class="sidebar-sub-header"><a href="/vuepressblog/views/java/Mybatis%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90.html#_1-4-2-会话对象应用分析-了解" class="sidebar-link">1.4.2.会话对象应用分析 (了解)</a></li><li class="sidebar-sub-header"><a href="/vuepressblog/views/java/Mybatis%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90.html#_1-4-3-基于mapper接口会话-了解" class="sidebar-link">1.4.3.基于Mapper接口会话(了解)</a></li></ul></li></ul></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-73c95a87 data-v-0b87bb44><h3 class="title" style="display:none;" data-v-73c95a87 data-v-73c95a87>Mybatis 原理分析</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-73c95a87 data-v-73c95a87><input type="password" value="" data-v-73c95a87> <span data-v-73c95a87>Konck! Knock!</span> <button data-v-73c95a87>OK</button></label> <div class="footer" style="display:none;" data-v-73c95a87 data-v-73c95a87><span data-v-73c95a87><i class="iconfont reco-theme" data-v-73c95a87></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-73c95a87>vuePress-theme-reco</a></span> <span data-v-73c95a87><i class="iconfont reco-copyright" data-v-73c95a87></i> <a data-v-73c95a87><span data-v-73c95a87>Zpeng</span>
+            
+          <!---->
+          2020
+        </a></span></div></div> <div data-v-0b87bb44><main class="page"><!----> <div class="page-title" style="display:none;"><h1>Mybatis 原理分析</h1> <hr> <div data-v-7b2e794a><i class="iconfont reco-account" data-v-7b2e794a><span data-v-7b2e794a>Zpeng</span></i> <i class="iconfont reco-date" data-v-7b2e794a><span data-v-7b2e794a>2020-03-20 16:00:47</span></i> <i class="iconfont reco-eye" data-v-7b2e794a><span id="/vuepressblog/views/java/Mybatis%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90.html" data-flag-title="Your Article Title" class="leancloud-visitors" data-v-7b2e794a><a class="leancloud-visitors-count" style="font-size:.9rem;font-weight:normal;color:#999;"></a></span></i> <i class="iconfont reco-tag tags" data-v-7b2e794a><span class="tag-item" data-v-7b2e794a>
+      mybatis
+    </span><span class="tag-item" data-v-7b2e794a>
+      java
+    </span></i></div></div> <div class="theme-reco-content content__default" style="display:none;"><h1 id="mybatis-原理分析"><a href="#mybatis-原理分析" class="header-anchor">#</a> Mybatis 原理分析</h1> <h2 id="_1-mybatis-框架核心基础"><a href="#_1-mybatis-框架核心基础" class="header-anchor">#</a> 1.MYBATIS 框架核心基础</h2> <h3 id="_1-1-mybatis-架构分析"><a href="#_1-1-mybatis-架构分析" class="header-anchor">#</a> 1.1.MYBATIS 架构分析</h3> <h4 id="_1-1-1-mybatis-应用架构-重点"><a href="#_1-1-1-mybatis-应用架构-重点" class="header-anchor">#</a> 1.1.1.Mybatis 应用架构(重点)</h4> <p>MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。2013年11月迁移到Github。<br>
+  iBATIS一词来源于“internet”和“abatis”的组合，是一个基于Java的持久层框架。iBATIS提供的持久层框架包括SQL Maps和Data Access Objects（DAOs）<br>
+  当前，最新版本是MyBatis 3.5.3 ，其发布时间是2019年10月20日。<br>
+  谈谈对mybatis的应用架构的理解？<br>
+  MyBatis 是一个优秀的持久层框架，实现了对JDBC操作（标准API）的封装，主要用于传统简化JDBC操作中的一些相对繁琐的步骤，例如参数的映射，结果集的映射（数据库中记录存储到内存中的对象中）等。</p> <hr> <p><img src="http://www.zhangpeng.fun/upload/2019/12/image-560a50a7839f4872849ab1ccbfad6469.png" alt="image.png"></p> <p>为何使用mybatis实现数据持久层应用？<br>
+  1)第一稳定，灵活（动态SQL），功能强大(池，日志，缓存)<br>
+  2)学习以及使用成本低<br>
+  3)解耦，SQL的可维护性，可复用性比较高。<br>
+说明:mybatis官网参考<br>
+  1)mybatis.org/mybatis-3<br>
+  2)github.com/mybatis<br>
+  http://www.mybatis.org/spring/<br></p> <h4 id="_1-1-2-mybatis-产品架构"><a href="#_1-1-2-mybatis-产品架构" class="header-anchor">#</a> 1.1.2.Mybatis 产品架构</h4> <p>所有框架都要解决一些共性问题（持久化），都是一种半成品，mybatis也不例外，它作为一种框架，它要解决相关问题，如何解决问题？采用怎样的架构解决问题，这是我们要学习的一个点。<br></p> <hr> <p><img src="http://www.zhangpeng.fun/upload/2019/12/image-ce73a35989d24609bea1e690e4fefbe8.png" alt="image.png"><img src="http://182.92.171.224/upload/20191123_11104417.png" alt="">
+思考:mybatis作为一个持久层框架,应该解决哪些功能性问题?<br>
+  1)会话功能 (SqlSession)<br>
+  2)会话语言 (SQL,动态SQL)<br>
+  3)会话协议 (TCP)<br>
+  4)用户体验 (连接池,缓存,日志)<br></p> <h4 id="_1-1-3-mybatis-技术架构"><a href="#_1-1-3-mybatis-技术架构" class="header-anchor">#</a> 1.1.3.MyBatis 技术架构</h4> <hr> <p>Mybatis 框架&quot;构成&quot;分析,如下图所示:</p> <hr> <p><img src="http://www.zhangpeng.fun/upload/2019/12/image-a20f8c95d3b9434ebc3b31b227e67ad1.png" alt="image.png"></p> <p>资源配置技术架构,如下图所示:</p> <hr> <p><img src="http://www.zhangpeng.fun/upload/2019/12/image-06be9ff35c7c4e91b120bcd7037e6724.png" alt="image.png"></p> <p>会话工厂对象创建(说说SqlSessionFactory对象的创建过程),如下图所示:</p> <hr> <p><img src="http://www.zhangpeng.fun/upload/2019/12/image-bcc803a719c34a9ba811d459227e8a5b.png" alt="image.png"></p> <p>会话对象创建？(说说sqlsession对象创建过程),如下图所示:</p> <hr> <p><img src="http://www.zhangpeng.fun/upload/2019/12/image-b694dc22593a49fba51c7e8e797825fc.png" alt="image.png"></p> <p>会话对象应用方式,如下图所示:</p> <hr> <p><img src="http://www.zhangpeng.fun/upload/2019/12/image-a42b6b7b51a644f5b2e4d05d2ab4e37d.png" alt="image.png"></p> <h3 id="_1-2-mybatis-环境配置实践"><a href="#_1-2-mybatis-环境配置实践" class="header-anchor">#</a> 1.2.MYBATIS 环境配置实践</h3> <h4 id="_1-2-1-初始化数据环境"><a href="#_1-2-1-初始化数据环境" class="header-anchor">#</a> 1.2.1.初始化数据环境</h4> <p>本次数据初始化直接在mysql的命令行执行:<br>
+1.启动系统命令行控制台<br>
+2.登陆数据库:mysql -u root -p<br>
+3.设置客户端编码：set names utf8<br>
+4.导入数据：source d:/xxx.sql<br>
+说明：查询时，假如有中文要显示，可先执行set names gbk.<br></p> <h4 id="_1-2-2-创建并配置项目"><a href="#_1-2-2-创建并配置项目" class="header-anchor">#</a> 1.2.2.创建并配置项目</h4> <p>1.打开IDE并进行配置(新的工作区)<br>
+1)配置工作区编码(utf-8)<br><br>
+2)配置maven环境(本地库,私服配置)<br></p> <p>2.创建maven项目并添加依赖<br><br>
+项目名称:CGB-MYBATIS-01<br>
+打包方式:jar包<br>
+组id:com.cy<br></p> <p>MySQL驱动依赖(假如驱动版本与当前数据库不一致可能会有问题)</p> <div class="language- extra-class"><pre><code> 	&lt;dependency&gt;
+  		&lt;groupId&gt;mysql&lt;/groupId&gt;
+	    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+  		&lt;version&gt;8.0.17&lt;/version&gt;
+  	&lt;/dependency&gt;
+</code></pre></div><p>Mybatis 框架依赖（参考官方 mybatis.org/mybatis-3）</p> <div class="language- extra-class"><pre><code>  	&lt;dependency&gt;
+  		&lt;groupId&gt;org.mybatis&lt;/groupId&gt;
+  		&lt;artifactId&gt;mybatis&lt;/artifactId&gt;
+  		&lt;version&gt;3.5.2&lt;/version&gt;
+  	&lt;/dependency&gt;
+</code></pre></div><p>Junit单元测试依赖</p> <div class="language- extra-class"><pre><code>&lt;dependency&gt;
+  		&lt;groupId&gt;junit&lt;/groupId&gt;
+  		&lt;artifactId&gt;junit&lt;/artifactId&gt;
+  		&lt;version&gt;4.12&lt;/version&gt;
+  	&lt;/dependency&gt;
+</code></pre></div><p>说明:学了spring boot以后还有一种测试方式<br>
+3.配置项目<br>
+在src/main/resources目录下创建mybatis-configs.xml配置文件如下：</p> <div class="language- extra-class"><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE configuration
+  PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;
+  &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
+&lt;!-- mybatis 核心配置 --&gt;
+&lt;configuration&gt;
+  &lt;!-- 配置初始化环境(连接) --&gt;
+  &lt;environments default=&quot;development&quot;&gt;
+    &lt;environment id=&quot;development&quot;&gt;
+      &lt;transactionManager type=&quot;JDBC&quot;/&gt;
+      &lt;!-- 使用mybatis自带连接池 --&gt;
+      &lt;dataSource type=&quot;POOLED&quot;&gt;
+        &lt;property name=&quot;driver&quot; value=&quot;com.mysql.jdbc.Driver&quot;/&gt;
+        &lt;property name=&quot;url&quot;  value=&quot;jdbc:mysql:///dbgoods?serverTimezone=GMT&quot;/&gt;
+        &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;
+        &lt;property name=&quot;password&quot; value=&quot;root&quot;/&gt;
+      &lt;/dataSource&gt;
+    &lt;/environment&gt;
+  &lt;/environments&gt;
+&lt;/configuration&gt;
+</code></pre></div><p>其模板：参考官方配置实现（Getting start ）</p> <h4 id="_1-2-3-项目环境单元测试"><a href="#_1-2-3-项目环境单元测试" class="header-anchor">#</a> 1.2.3.项目环境单元测试</h4> <p>在测试包中，创建测试类，测试是否可以获取与数据库的连接<br></p> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TestBase</span> <span class="token punctuation">{</span>
+	<span class="token comment">/**
+	 * 借助此对象创建SqlSession(通过此对象
+	 * 实现与数据库之间的会话)
+	 */</span>
+	<span class="token keyword">protected</span> <span class="token class-name">SqlSessionFactory</span> factory<span class="token punctuation">;</span>
+    <span class="token comment">/**
+     * 此方会在@Test注解修饰的方法之前执行,
+     * 通常用于做一些初始化操作(方法名自己定义)
+     */</span>
+	<span class="token annotation punctuation">@Before</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token keyword">throws</span> <span class="token class-name">IOException</span><span class="token punctuation">{</span>
+		<span class="token class-name">InputStream</span> in<span class="token operator">=</span>
+<span class="token class-name">Resources</span><span class="token punctuation">.</span><span class="token function">getResourceAsStream</span><span class="token punctuation">(</span><span class="token string">&quot;mybatis-configs.xml&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		factory<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">SqlSessionFactoryBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span>in<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//系统底层建造者模式构建工厂对象(此对象构建过程相对复杂)</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>factory<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token annotation punctuation">@Test</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testSqlSessionConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token class-name">SqlSession</span> session<span class="token operator">=</span>factory<span class="token punctuation">.</span><span class="token function">openSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token class-name">Connection</span> conn<span class="token operator">=</span>session<span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>conn<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br></div></div><p>API 创建过程分析:</p> <hr> <p><img src="http://www.zhangpeng.fun/upload/2019/12/image-dc8bb262568b4dea95913f0c517f4486.png" alt="image.png"></p> <h3 id="_1-3-mybatis业务应用快速实践"><a href="#_1-3-mybatis业务应用快速实践" class="header-anchor">#</a> 1.3.MYBATIS业务应用快速实践</h3> <p>参考官网：www.mybatis.org/mybatis-3 实现对商品模块数据的CRUD操作。</p> <h4 id="_1-3-1-基于业务实现"><a href="#_1-3-1-基于业务实现" class="header-anchor">#</a> 1.3.1.基于业务实现</h4> <p>添加业务实现(以添加商品信息为例进行实现)<br>
+第一步：编写pojo对象(com.cy.pj.goods.pojo.Goods),<br>
+借助此对象存储内存中的数据,最后将内存中的数据持久化到数据库.<br></p> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>cy<span class="token punctuation">.</span>pj<span class="token punctuation">.</span>goods<span class="token punctuation">.</span>pojo</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io</span><span class="token punctuation">.</span><span class="token class-name">Serializable</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util</span><span class="token punctuation">.</span><span class="token class-name">Date</span><span class="token punctuation">;</span>
+<span class="token comment">/**
+ * POJO:借助此对象在内存中封装商品信息
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Goods</span> <span class="token keyword">implements</span> <span class="token class-name">Serializable</span><span class="token punctuation">{</span>
+	<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">long</span> serialVersionUID <span class="token operator">=</span> <span class="token number">6239917530570596544L</span><span class="token punctuation">;</span>
+	<span class="token keyword">private</span> <span class="token class-name">Long</span> id<span class="token punctuation">;</span>
+	<span class="token keyword">private</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span>
+	<span class="token keyword">private</span> <span class="token class-name">String</span> remark<span class="token punctuation">;</span>
+	<span class="token keyword">private</span> <span class="token class-name">Date</span> createdTime<span class="token punctuation">;</span>
+	<span class="token keyword">public</span> <span class="token class-name">Long</span> <span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> id<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setId</span><span class="token punctuation">(</span><span class="token class-name">Long</span> id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>id <span class="token operator">=</span> id<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> name<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setName</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getRemark</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> remark<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setRemark</span><span class="token punctuation">(</span><span class="token class-name">String</span> remark<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>remark <span class="token operator">=</span> remark<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token class-name">Date</span> <span class="token function">getCreatedTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> createdTime<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setCreatedTime</span><span class="token punctuation">(</span><span class="token class-name">Date</span> createdTime<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>createdTime <span class="token operator">=</span> createdTime<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br></div></div><p>第二步:编写映射文件(mapper/GoodsMapper.xml),实现内存中对象(一般是pojo对象)与数据库表的映射(例如属性与字段进行映射)</p> <div class="language- extra-class"><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE mapper
+  PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;
+  &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+&lt;mapper namespace=&quot;com.cy.pj.goods.dao.GoodsDao&quot;&gt;
+    &lt;insert id=&quot;insertObject&quot;
+            parameterType=&quot;com.cy.pj.goods.pojo.Goods&quot;&gt;
+        insert into tb_goods
+        (id,name,remark,createdTime)
+        values
+        (#{id},#{name},#{remark},now())
+    &lt;/insert&gt;
+&lt;/mapper&gt;
+</code></pre></div><p>第三步:注册映射文件(mybatis-configs.xml)，在配置文件中添加如下语句：</p> <div class="language- extra-class"><pre><code>&lt;mappers&gt;
+     &lt;mapper resource=&quot;mapper/GoodsMapper.xml&quot;/&gt;
+  &lt;/mappers&gt;\
+</code></pre></div><p>第四步:定义单元测试类(TestGoodsDao)及方法进行单元测试</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>test</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>ibatis<span class="token punctuation">.</span>session</span><span class="token punctuation">.</span><span class="token class-name">SqlSession</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>junit</span><span class="token punctuation">.</span><span class="token class-name">Test</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>cy<span class="token punctuation">.</span>pj<span class="token punctuation">.</span>goods<span class="token punctuation">.</span>pojo</span><span class="token punctuation">.</span><span class="token class-name">Goods</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TestGoodsDao01</span> <span class="token keyword">extends</span> <span class="token class-name">TestBaseWithXml</span> <span class="token punctuation">{</span>
+	<span class="token annotation punctuation">@Test</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testInsertObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token comment">//1.创建Goods对象</span>
+		<span class="token class-name">Goods</span> g<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Goods</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		g<span class="token punctuation">.</span><span class="token function">setId</span><span class="token punctuation">(</span><span class="token number">14L</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		g<span class="token punctuation">.</span><span class="token function">setName</span><span class="token punctuation">(</span><span class="token string">&quot;IO&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		g<span class="token punctuation">.</span><span class="token function">setRemark</span><span class="token punctuation">(</span><span class="token string">&quot;IO...&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//2.将Goods对象写入到数据库</span>
+		<span class="token comment">//2.1获取SqlSession对象</span>
+		<span class="token class-name">SqlSession</span> session<span class="token operator">=</span>
+		sqlSessionFactory<span class="token punctuation">.</span><span class="token function">openSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//2.2将对象持久化</span>
+		<span class="token class-name">String</span> statement<span class="token operator">=</span><span class="token string">&quot;com.cy.pj.goods.dao.GoodsDao.insertObject&quot;</span><span class="token punctuation">;</span>
+		<span class="token keyword">int</span> rows<span class="token operator">=</span>session<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span>statement<span class="token punctuation">,</span> g<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;insert.rows=+&quot;</span><span class="token operator">+</span>rows<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//2.3提交事务</span>
+		session<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//2.4释放资源</span>
+		session<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br></div></div><p>修改业务实现(以修改商品信息为例进行实现)<br>
+第一步：修改映射文件(mapper/GoodsMapper.xml),添加update元素实现信息修改操作语句的定义.</p> <div class="language- extra-class"><pre><code>    &lt;update id=&quot;updateObject&quot;&gt;
+        update tb_goods
+        set name=#{name},
+            remark=#{remark}
+        where id=#{id}
+    &lt;/update&gt;
+</code></pre></div><p>第二步:修改单元测试类(TestGoodsDao01),添加修改测试方法.</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token annotation punctuation">@Test</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testUpdateObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token comment">//1.创建Goods对象</span>
+		<span class="token class-name">Goods</span> g<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Goods</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		g<span class="token punctuation">.</span><span class="token function">setId</span><span class="token punctuation">(</span><span class="token number">14L</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		g<span class="token punctuation">.</span><span class="token function">setName</span><span class="token punctuation">(</span><span class="token string">&quot;Thread&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		g<span class="token punctuation">.</span><span class="token function">setRemark</span><span class="token punctuation">(</span><span class="token string">&quot;Thread...&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//2.将Goods对象写入到数据库</span>
+		<span class="token comment">//2.1获取SqlSession对象</span>
+		<span class="token class-name">SqlSession</span> session<span class="token operator">=</span>
+				sqlSessionFactory<span class="token punctuation">.</span><span class="token function">openSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//2.2将对象持久化</span>
+		<span class="token class-name">String</span> statement<span class="token operator">=</span><span class="token string">&quot;com.cy.pj.goods.dao.GoodsDao.updateObject&quot;</span><span class="token punctuation">;</span>
+		<span class="token keyword">int</span> rows<span class="token operator">=</span>session<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>statement<span class="token punctuation">,</span> g<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;update.rows=+&quot;</span><span class="token operator">+</span>rows<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//2.3提交事务</span>
+		session<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//2.4释放资源</span>
+		session<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><p>1)删除业务实现(以删除作者信息为例进行实现)<br>
+step01:修改映射文件(mapper/GoodsMapper.xml),添加delete元素,实现基于id进行删除操作语句的定义.</p> <div class="language- extra-class"><pre><code> &lt;delete id=&quot;deleteById&quot;&gt;
+       delete from tb_goods
+       where id=#{id}
+  &lt;/delete&gt;
+</code></pre></div><p>step02:修改单元测试类(TestGoodsDao01),添加删除测试方法</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token annotation punctuation">@Test</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testDeleteById</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token comment">//1.获取session对象</span>
+		<span class="token class-name">SqlSession</span> session <span class="token operator">=</span> 
+		sqlSessionFactory<span class="token punctuation">.</span><span class="token function">openSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//2.执行删除操作</span>
+		<span class="token class-name">String</span> statement<span class="token operator">=</span>
+		<span class="token string">&quot;com.cy.pj.goods.dao.GoodsDao.deleteById&quot;</span><span class="token punctuation">;</span>
+		<span class="token keyword">try</span> <span class="token punctuation">{</span>
+		<span class="token keyword">int</span> rows<span class="token operator">=</span>session<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span>statement<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;delete.rows=&quot;</span><span class="token operator">+</span>rows<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//3.提交事务</span>
+		session<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//4.释放资源</span>
+		<span class="token punctuation">}</span><span class="token keyword">finally</span> <span class="token punctuation">{</span>
+		session<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><p>2)查询业务实现(以查询某个商品信息为例进行实现)<br>
+step01:修改映射文件(mapper/GoodsMapper.xml),添加select元素,实现基于id查询作者信息语句的定义.</p> <div class="language- extra-class"><pre><code>   &lt;select id=&quot;selectById&quot;
+            resultType=&quot;com.cy.pj.goods.pojo.Goods&quot;&gt;
+       select id,name,remark,createdTime
+       from tb_goods
+       where id=#{id}
+    &lt;/select&gt;
+</code></pre></div><p>step02:修改单元测试类(TestGoodsDao01),添加基于id执行查询的操作</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token annotation punctuation">@Test</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testSelectById</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token comment">//1.获取session对象</span>
+		<span class="token class-name">SqlSession</span> session <span class="token operator">=</span> 
+				sqlSessionFactory<span class="token punctuation">.</span><span class="token function">openSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//2.执行删除操作</span>
+		<span class="token class-name">String</span> statement<span class="token operator">=</span>
+				<span class="token string">&quot;com.cy.pj.goods.dao.GoodsDao.selectById&quot;</span><span class="token punctuation">;</span>
+		<span class="token keyword">try</span> <span class="token punctuation">{</span>
+			<span class="token class-name">Goods</span> g<span class="token operator">=</span>session<span class="token punctuation">.</span><span class="token function">selectOne</span><span class="token punctuation">(</span>statement<span class="token punctuation">,</span><span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>g<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token comment">//3.提交事务</span>
+			session<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token comment">//4.释放资源</span>
+		<span class="token punctuation">}</span><span class="token keyword">finally</span> <span class="token punctuation">{</span>
+			session<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><p>3)分页查询实现(以查询多个商品信息为例进行实现)<br>
+step01:修改映射文件(mapper/GoodsMapper.xml),添加select元素,实现基于分页条件查询作者信息语句的定义.</p> <div class="language- extra-class"><pre><code>&lt;select id=&quot;findPageObjects&quot;
+            resultType=&quot;com.cy.pj.goods.pojo.Goods&quot;&gt;
+         select *
+         from tb_goods
+         limit #{startIndex},#{pageSize}
+    &lt;/select&gt;
+</code></pre></div><p>step02:修改单元测试类(TestGoodsDao01),添加基于分页条件执行查询.</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token annotation punctuation">@Test</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testFindPageObjects</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+		<span class="token comment">//1.获取session对象</span>
+		<span class="token class-name">SqlSession</span> session <span class="token operator">=</span> 
+		sqlSessionFactory<span class="token punctuation">.</span><span class="token function">openSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//2.执行删除操作</span>
+		<span class="token class-name">String</span> statement<span class="token operator">=</span>
+		<span class="token string">&quot;com.cy.pj.goods.dao.GoodsDao.findPageObjects&quot;</span><span class="token punctuation">;</span>
+		<span class="token keyword">try</span> <span class="token punctuation">{</span>
+		<span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span><span class="token class-name">Object</span><span class="token punctuation">&gt;</span></span> map<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span><span class="token class-name">Object</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">&quot;startIndex&quot;</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">&quot;pageSize&quot;</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Goods</span><span class="token punctuation">&gt;</span></span> list<span class="token operator">=</span>
+		session<span class="token punctuation">.</span><span class="token function">selectList</span><span class="token punctuation">(</span>statement<span class="token punctuation">,</span>map<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>list<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//3.提交事务</span>
+		session<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//connection.commint</span>
+		<span class="token comment">//4.释放资源</span>
+		<span class="token punctuation">}</span><span class="token keyword">finally</span> <span class="token punctuation">{</span>
+		session<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><p>4)删除多条数据(以删除商品信息为例进行删除,借助动态sql)<br>
+step01:修改映射文件(mapper/GoodsMapper.xml),添加delete元素,实现基于多个ID删除作者信息的语句的定义.</p> <div class="language- extra-class"><pre><code>   &lt;delete id=&quot;deleteObjects&quot;&gt;
+       delete from tb_goods
+       &lt;where&gt; 
+         &lt;!-- foreach元素用于迭代一个数组或集合 --&gt;
+         &lt;foreach collection=&quot;array&quot;
+                item=&quot;id&quot;&gt;
+              or id=#{id}
+         &lt;/foreach&gt;
+       &lt;/where&gt;
+    &lt;/delete&gt;
+</code></pre></div><p>step02:修改单元测试类(TestGoodsDao01),添加基于多个ID执行删除的操作.</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token annotation punctuation">@Test</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testDeleteObjects</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+		<span class="token comment">//1.获取session对象</span>
+		<span class="token class-name">SqlSession</span> session <span class="token operator">=</span> 
+		sqlSessionFactory<span class="token punctuation">.</span><span class="token function">openSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//2.执行删除操作</span>
+		<span class="token class-name">String</span> statement<span class="token operator">=</span>
+		<span class="token string">&quot;com.cy.pj.goods.dao.GoodsDao.deleteObjects&quot;</span><span class="token punctuation">;</span>
+		<span class="token keyword">try</span> <span class="token punctuation">{</span>
+		<span class="token keyword">int</span> rows<span class="token operator">=</span>session<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span>statement<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">{</span><span class="token number">13</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;delete.rows=&quot;</span><span class="token operator">+</span>rows<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//3.提交事务</span>
+		session<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//connection.commint</span>
+		<span class="token comment">//4.释放资源</span>
+		<span class="token punctuation">}</span><span class="token keyword">finally</span> <span class="token punctuation">{</span>
+		session<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span><span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><h4 id="_1-3-2-基本业务进阶实现"><a href="#_1-3-2-基本业务进阶实现" class="header-anchor">#</a> 1.3.2.基本业务进阶实现</h4> <p>基于接口方式实现数据访问操作<br>
+1)分页查询实现(以查询多个作者信息为例进行实现)<br>
+第一步: 创建一个接口GoodsDao 定一个分页查询方法</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>cy<span class="token punctuation">.</span>pj<span class="token punctuation">.</span>goods<span class="token punctuation">.</span>dao</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util</span><span class="token punctuation">.</span><span class="token class-name">List</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>ibatis<span class="token punctuation">.</span>annotations</span><span class="token punctuation">.</span><span class="token class-name">Param</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>cy<span class="token punctuation">.</span>pj<span class="token punctuation">.</span>goods<span class="token punctuation">.</span>pojo</span><span class="token punctuation">.</span><span class="token class-name">Goods</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">GoodsDao</span> <span class="token punctuation">{</span>
+	 <span class="token comment">/**
+	    * 执行数据的删除操作
+	  * @param ids
+	  * @return
+	  */</span>
+	 <span class="token keyword">int</span> <span class="token function">deleteObjects</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> ids<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>第二步: 创建一个单元测试类TestGoodsDao02对分页查询进行单元测试</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TestGoodsDao02</span> <span class="token keyword">extends</span> <span class="token class-name">TestBaseWithXml</span> <span class="token punctuation">{</span>
+	<span class="token annotation punctuation">@Test</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testDeleteObjects</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+		<span class="token comment">//1.获取session对象</span>
+		<span class="token class-name">SqlSession</span> session <span class="token operator">=</span> 
+		sqlSessionFactory<span class="token punctuation">.</span><span class="token function">openSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">try</span> <span class="token punctuation">{</span>
+		<span class="token comment">//2.执行删除操作</span>
+		<span class="token class-name">GoodsDao</span> gDao<span class="token operator">=</span>
+		session<span class="token punctuation">.</span><span class="token function">getMapper</span><span class="token punctuation">(</span><span class="token class-name">GoodsDao</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">int</span> rows<span class="token operator">=</span>gDao<span class="token punctuation">.</span><span class="token function">deleteObjects</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">,</span><span class="token number">12</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;delete.rows=&quot;</span><span class="token operator">+</span>rows<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//3.提交事务</span>
+		<span class="token comment">//session.commit();//connection.commint</span>
+		<span class="token comment">//4.释放资源</span>
+		<span class="token punctuation">}</span><span class="token keyword">finally</span> <span class="token punctuation">{</span>
+		session<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><p>2)基于多个id进行删除 (以删除作者信息为例进行实现)<br>
+第一步：修改GoodsDao接口,添加deleteObjects方法</p> <div class="language- extra-class"><pre><code>	 int deleteObjects(int... ids);
+</code></pre></div><p>第二步: 修改单元测试类,添加testDeleteObjects方法实现单元测试.</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token annotation punctuation">@Test</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testDeleteObjects</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+		<span class="token comment">//1.获取session对象</span>
+		<span class="token class-name">SqlSession</span> session <span class="token operator">=</span> 
+		sqlSessionFactory<span class="token punctuation">.</span><span class="token function">openSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">try</span> <span class="token punctuation">{</span>
+		<span class="token comment">//2.执行删除操作</span>
+		<span class="token class-name">GoodsDao</span> gDao<span class="token operator">=</span>
+		session<span class="token punctuation">.</span><span class="token function">getMapper</span><span class="token punctuation">(</span><span class="token class-name">GoodsDao</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">int</span> rows<span class="token operator">=</span>gDao<span class="token punctuation">.</span><span class="token function">deleteObjects</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">,</span><span class="token number">12</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;delete.rows=&quot;</span><span class="token operator">+</span>rows<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//3.提交事务</span>
+		<span class="token comment">//session.commit();//connection.commint</span>
+		<span class="token comment">//4.释放资源</span>
+		<span class="token punctuation">}</span><span class="token keyword">finally</span> <span class="token punctuation">{</span>
+		session<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><p>基于注解(Annotation)方式做业务实现?<br>
+第一步：在GoodsDao接口中添加统计记录行数的方法：getRowCount()<br></p> <div class="language- extra-class"><pre><code>int getRowCount();&lt;br/&gt;
+</code></pre></div><p>第二步：在GoodsDao接口的统计记录方法上添加@Select注解，定义查询语句。<br></p> <div class="language- extra-class"><pre><code>@Select(&quot;select count(*) from tb_goods&quot;)
+int getRowCount();
+</code></pre></div><p>第三步：在TestGoodsDao02测试类中添加测试方法。</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token annotation punctuation">@Test</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testGetRowCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">SqlSession</span> session<span class="token operator">=</span>
+		sqlSessionFactory<span class="token punctuation">.</span><span class="token function">openSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">try</span> <span class="token punctuation">{</span>
+		<span class="token class-name">GoodsDao</span> dao<span class="token operator">=</span>
+		session<span class="token punctuation">.</span><span class="token function">getMapper</span><span class="token punctuation">(</span><span class="token class-name">GoodsDao</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">int</span> rowCount<span class="token operator">=</span>dao<span class="token punctuation">.</span><span class="token function">getRowCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>rowCount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		session<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span><span class="token keyword">finally</span> <span class="token punctuation">{</span>
+		session<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><h4 id="_1-3-3-会话工厂对象创建增强-了解"><a href="#_1-3-3-会话工厂对象创建增强-了解" class="header-anchor">#</a> 1.3.3.会话工厂对象创建增强(了解)</h4> <hr> <p>基于非XMl方式构建SqlSessionFactory对象?</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>test</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>cy<span class="token punctuation">.</span>pj<span class="token punctuation">.</span>goods<span class="token punctuation">.</span>dao</span><span class="token punctuation">.</span><span class="token class-name">GoodsDao</span><span class="token punctuation">;</span>
+<span class="token comment">/**
+ * Building SqlSessionFactory without XML
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TestBaseWithJava</span> <span class="token punctuation">{</span>
+    <span class="token keyword">protected</span> <span class="token class-name">SqlSessionFactory</span> sqlSessionFactory<span class="token punctuation">;</span>
+	<span class="token annotation punctuation">@Before</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token comment">//1.构建数据源对象</span>
+		<span class="token class-name">PooledDataSource</span> dataSource<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">PooledDataSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		dataSource<span class="token punctuation">.</span><span class="token function">setDriver</span><span class="token punctuation">(</span><span class="token string">&quot;com.mysql.cj.jdbc.Driver&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	dataSource<span class="token punctuation">.</span><span class="token function">setUrl</span><span class="token punctuation">(</span><span class="token string">&quot;jdbc:mysql:///dbgoods?serverTimezone=GMT&amp;characterEncoding=utf8&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		dataSource<span class="token punctuation">.</span><span class="token function">setUsername</span><span class="token punctuation">(</span><span class="token string">&quot;root&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		dataSource<span class="token punctuation">.</span><span class="token function">setPassword</span><span class="token punctuation">(</span><span class="token string">&quot;root&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//2.创建事务管理工厂</span>
+		<span class="token class-name">JdbcTransactionFactory</span> transactionFactory<span class="token operator">=</span>
+		<span class="token keyword">new</span> <span class="token class-name">JdbcTransactionFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//3.创建一个环境对象</span>
+		<span class="token class-name">Environment</span> env<span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Environment</span><span class="token punctuation">(</span><span class="token string">&quot;development&quot;</span><span class="token punctuation">,</span>
+		transactionFactory<span class="token punctuation">,</span> dataSource<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//4.创建配置对象</span>
+		<span class="token class-name">Configuration</span> config<span class="token operator">=</span>
+		<span class="token keyword">new</span> <span class="token class-name">Configuration</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		config<span class="token punctuation">.</span><span class="token function">addMapper</span><span class="token punctuation">(</span><span class="token class-name">GoodsDao</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//5.创建sqlSessionFactory对象</span>
+		sqlSessionFactory<span class="token operator">=</span>
+        <span class="token keyword">new</span> <span class="token class-name">SqlSessionFactoryBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+		<span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token annotation punctuation">@Test</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token class-name">Connection</span> conn<span class="token operator">=</span>
+		sqlSessionFactory<span class="token punctuation">.</span><span class="token function">openSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+		<span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>conn<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br></div></div><p>测试实现</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>test</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>ibatis<span class="token punctuation">.</span>session</span><span class="token punctuation">.</span><span class="token class-name">SqlSession</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>junit</span><span class="token punctuation">.</span><span class="token class-name">Test</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>cy<span class="token punctuation">.</span>pj<span class="token punctuation">.</span>goods<span class="token punctuation">.</span>dao</span><span class="token punctuation">.</span><span class="token class-name">GoodsDao</span><span class="token punctuation">;</span>
+<span class="token comment">/**
+ * 	基于接口方式进行测试实现
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TestGoodsDao03</span> 
+     <span class="token keyword">extends</span> <span class="token class-name">TestBaseWithJava</span> <span class="token punctuation">{</span>
+	<span class="token annotation punctuation">@Test</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testGetRowCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">SqlSession</span> session<span class="token operator">=</span>
+		sqlSessionFactory<span class="token punctuation">.</span><span class="token function">openSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">try</span> <span class="token punctuation">{</span>
+		<span class="token class-name">GoodsDao</span> dao<span class="token operator">=</span>
+		session<span class="token punctuation">.</span><span class="token function">getMapper</span><span class="token punctuation">(</span><span class="token class-name">GoodsDao</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">int</span> rowCount<span class="token operator">=</span>dao<span class="token punctuation">.</span><span class="token function">getRowCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>rowCount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		session<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span><span class="token keyword">finally</span> <span class="token punctuation">{</span>
+		session<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><h3 id="_1-4-mybatis-应用原理进阶分析"><a href="#_1-4-mybatis-应用原理进阶分析" class="header-anchor">#</a> 1.4.MYBATIS 应用原理进阶分析</h3> <h4 id="_1-4-1-会话工厂创建分析-了解"><a href="#_1-4-1-会话工厂创建分析-了解" class="header-anchor">#</a> 1.4.1.会话工厂创建分析(了解)</h4> <hr> <p>会话工厂(SqlSessionFactory)创建过程分析:基于xml方式</p> <hr> <p><img src="http://www.zhangpeng.fun/upload/2019/12/image-454b49d31ee043ceb7e67d1cc5848800.png" alt="image.png">
+1.通过IO读取配置文件<br>
+2.解析IO数据并进行封装(所有信息都会存储到Configuration对象)<br>
+3.基于配置对象创建SqlSessionFactory对象<br></p> <p>会话工厂(SqlSessionFactory)创建过程分析:不基基于xml方式</p> <hr> <p><img src="http://www.zhangpeng.fun/upload/2019/12/image-b3af8a61276444e7a1313cb634862e86.png" alt="image.png"></p> <h3 id="_1-4-2-会话对象应用分析-了解"><a href="#_1-4-2-会话对象应用分析-了解" class="header-anchor">#</a> 1.4.2.会话对象应用分析 (了解)</h3> <hr> <p>说说mybatis对jdbc的封装过程（了解）？（SqlSession应用增强分析）</p> <hr> <p><img src="http://www.zhangpeng.fun/upload/2019/12/image-9eeb8dbe5a1e42fea794fcc251a9b054.png" alt="image.png">
+封装了连接获取过程？（Executor-&gt;JDBCTransactionConnection）<br>
+2)封装了Statement对象创建过程？(connection)<br>
+3)封装了sql的发送过程，参数的处理过程，结果的映射过程。<br></p> <h3 id="_1-4-3-基于mapper接口会话-了解"><a href="#_1-4-3-基于mapper接口会话-了解" class="header-anchor">#</a> 1.4.3.基于Mapper接口会话(了解)</h3> <p>例如：XxxMapper xm=session.getMapper(XxxDao.class);<br>
+当获取到mapper接口对应的实现类对象以后可以基于实现类底层执行sql操作。<br></p> <hr> <p><img src="http://www.zhangpeng.fun/upload/2019/12/image-2bf3be2cf81f4e3b9866452880e67a14.png" alt="image.png">
+FAQ?<br>
+1)不同通过getMapper方式获取指定接口实现类是否可以基于mybatis实现数据访问操作?(可以)<br>
+2)基于Mapper接口访问数据库库的优势,劣势?(解耦,可读性好但是性能相对较差,相对于直接通过sqlsession的selectList,update方法而言).<br></p> <h4 id="_1-4-4-缓存应用实现过程分析-掌握"><a href="#_1-4-4-缓存应用实现过程分析-掌握" class="header-anchor">#</a> 1.4.4.缓存应用实现过程分析(掌握)</h4> <p>Mybatis 框架提供一种缓存机制，通过缓存的应用来提高查询性能,但可能会有一定的不一致(脏读)问题。Mybatis中的缓存提供一级缓存和二级缓存的实现,默认都是开启状态（可参考官网）。<br>
+1.Mybatis 一级缓存<br>
+Mybatis中的一级缓存有时又称为SqlSession级缓存，SqlSession关闭时一级缓存失效。在同一个SqlSession内部多次执行同一个查询，后续的查询会从此缓存取数据.一级缓存结构分析如下:<br>
+一级缓存基本架构应用分析:<br></p> <hr> <p><img src="http://www.zhangpeng.fun/upload/2019/12/image-994fdc20ec8f406b90944ffe8583ca93.png" alt="image.png">
+一级缓存代码架构分析:</p> <hr> <p><img src="http://www.zhangpeng.fun/upload/2019/12/image-6e8c3b268e9b4227948e747aa9e19071.png" alt="image.png">
+说明：一级缓存的实现可查看BaseExecutor类中的localCache属性。</p> <p>2.MyBatis二级缓存<br></p> <p>Mybatis中的二级缓存有时又称跨session缓存，可在多个SqlSession间共享数据,假如要使用二级缓存，可在对应的mapper文件中借助cache元素进行配置(可参考官方映射文件配置),二级缓存架构分析如下:<br></p> <p>二级缓存基本应用架构:<br></p> <hr> <p><img src="http://www.zhangpeng.fun/upload/2019/12/image-320d1aa0f9a14514867317e697c88ae1.png" alt="image.png">
+二级缓存代码结构分析:<br></p> <hr> <p><img src="http://www.zhangpeng.fun/upload/2019/12/image-15ee6b13b3c24b4e8fbb1b42b07b7651.png" alt="image.png">
+说明：<br>
+1)二级缓存的实现可查看CachingExecutor类中的query方法.<br>
+2)二级缓存底层采用装饰模式进行设计,例如:<br>
+new SynchronizedCache (new LoggingCache(…));<br>
+3)二级缓存中可以存储序列化对象(readWrite属性值为false时)<br>
+4)使用二级缓存可在映射文件中借助<Cache></Cache>标签进行声明,也可在接口中借助注解@CacheNamespace对接口进行描述.<br>
+5)当映射配置有注解方式,也有xml方式时可通过缓存引用进行配置,例如.
+@CacheNamespaceRef(name=&quot;com.cy.pj.googs.dao.GoodsDao &quot;)<br></p></div> <footer class="page-edit" style="display:none;"><!----> <!----></footer> <!----> <!----></main> <!----> <div class="comments-wrapper" data-v-0b87bb44><div class="valine-wrapper"><div id="valine"></div></div></div></div></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-a81d141e data-v-a81d141e><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-a81d141e><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-a81d141e></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-a81d141e></path></svg></div><!----><div data-v-48108b4c><div class="DetailsOpenFlag" style="right:1rem;bottom:9rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;font-size:14px;font-weight:500;display:none;" data-v-48108b4c>
+ 展开 
+
+</div></div><div id="musicPlayer" data-v-361f21ca><!----> <div class="bbox" data-v-361f21ca><div class="pan" style="background-image:url(/vuepressblog/assets/img/pan.07613e22.png);" data-v-361f21ca><img src="" alt class="pan_c" data-v-361f21ca></div> <div class="box" style="background-image:url();" data-v-361f21ca><div class="music_shlter_2" style="background-image:url();" data-v-361f21ca></div> <div class="music_shlter" style="background-image:url();" data-v-361f21ca></div> <div class="music_shlter_3" data-v-361f21ca></div> <div class="music_dis" data-v-361f21ca><div class="dis_list" data-v-361f21ca>···</div> <p class="music_title" data-v-361f21ca></p> <p class="music_intro" data-v-361f21ca>歌手: </p> <ul class="music_words" data-v-361f21ca><div class="music_words_box" style="top:0px;" data-v-361f21ca></div></ul></div> <div class="control_box" data-v-361f21ca><div class="control_button" data-v-361f21ca><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHAAAACMCAYAAACksC0pAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALjSURBVHhe7doxbuswFETRSG68pVTZ+y+SJdmVE/GDC0hzBxnynoqpBGhIaoy84/vyBnu9Xv9ut9vH/HN5j8fj836/v88/Mc/n8+uca9RxHPgm2VUkwN2kNux4TiTA65Y+5nIL53m+5hI1nuMJLGeAgKu0xW42AwQEiv1/10bJBLhhC0198z2BBFtoueUC3I0BlkvdOLZQyGiHc4myhXJsoc2CG9YWSkgFeJ6nJYZgCy1nCy23XIC7tVBPYL/YhjVAwGiHc4mK/Uc+daX8FbZQ/YrfQEhqpGIwQEDqkzE2SiTA3X5GJHkCAcuVmN1aqIO95ZIb1gABqQD9GQG5XuxcsRyp4KSuUE8gwRZabrkAd2OA5Wyh5Rzs7WcLbRbcsLZQQipAB3shttByttByywW4Wwv1BPaLbVgDBDjYW84WWs5vYLnkjWOAgFSADvYuwBMISG1YWyhkvNi5RNlCIZaYcqkAx3MMEHC92LliOVLBSV2hnkBCasPGSowtlGELLWeAEFtoOQd7+9lCmwU3rC2UkApwjG54AgGpAG2hEFtoueUC3K2FegL7xTasAQJGO5xLlCMVEFtoOb+B5ZI3jgECUgE62LsATyAgtWFtoRBHKspZYsqlAhzPMUDA9WLniuVIBSd1hXoCCakNGysxtlCGLbScAUJsoeUc7O1nC20W3LC2UEIqwDG64QkEpAK0hUJsoeWWC3C3FuoJ7BfbsAYIGO1wLlGOVEBsoeX8BpZL3jgGCEgF6GDvAjyBgOVKzG4tNDVSEfsZsRtLTLlUgOM5Bgi4XuxcsRyp4KSuUE8gwRZabrkAd2OA5Wyh5Rzs7WcLbRbcsLZQQipAB3shttByttByywW4Wwv1BPaLbVgDBDjYW84Wql/xGwgZ85pziTNAQOqT4WDvAjyBgOVKzG4t1MHecskNa4CAVID+jIBcL3auWI5UcFJXqCeQYAstt1yAuzHAcrbQcg729rOFNstt2LfvHxY+GuRFc4rhAAAAAElFTkSuQmCC" alt class="control_icon" data-v-361f21ca></div> <div class="progress" data-v-361f21ca><div class="progress_c" style="width:0%;" data-v-361f21ca><div class="progress_circle" data-v-361f21ca><div class="progress_circle_c" data-v-361f21ca></div></div></div></div></div></div> <video id="music" autoplay="autoplay" src="" name="media" data-v-361f21ca></video></div></div></div></div>
+    <script src="/vuepressblog/assets/js/app.7e150cda.js" defer></script><script src="/vuepressblog/assets/js/5.77d6a875.js" defer></script><script src="/vuepressblog/assets/js/1.09091223.js" defer></script><script src="/vuepressblog/assets/js/2.aca3c302.js" defer></script><script src="/vuepressblog/assets/js/27.75f1fdf2.js" defer></script><script src="/vuepressblog/assets/js/19.d519ea0a.js" defer></script>
+  </body>
+</html>

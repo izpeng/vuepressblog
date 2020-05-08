@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>SPRING 框架核心进阶 | Zpeng</title>
+    <meta name="generator" content="VuePress 1.4.1">
+    <link rel="icon" href="https://infinitypro-img.infinitynewtab.com/custom-icon/8001de1jd3n68lbfnxxt564xvb0vl5.png?imageMogr2/thumbnail/240x/format/webp/blur/1x0/quality/100|imageslim">
+    <script language="javascript" type="text/javascript" src="https://cdn.staticfile.org/jquery/1.7.2/jquery.min.js"></script>
+    <script language="javascript" type="text/javascript" src="/vuepressblog/js/MouseClickEffect.js"></script>
+    <meta name="description" content="可以分享的不仅仅只有技术！">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <link rel="preload" href="/vuepressblog/assets/css/0.styles.7ed2eb0c.css" as="style"><link rel="preload" href="/vuepressblog/assets/js/app.7e150cda.js" as="script"><link rel="preload" href="/vuepressblog/assets/js/5.77d6a875.js" as="script"><link rel="preload" href="/vuepressblog/assets/js/1.09091223.js" as="script"><link rel="preload" href="/vuepressblog/assets/js/2.aca3c302.js" as="script"><link rel="preload" href="/vuepressblog/assets/js/33.6cb36c5d.js" as="script"><link rel="preload" href="/vuepressblog/assets/js/19.d519ea0a.js" as="script"><link rel="prefetch" href="/vuepressblog/assets/js/10.32dcd315.js"><link rel="prefetch" href="/vuepressblog/assets/js/11.9163a9d8.js"><link rel="prefetch" href="/vuepressblog/assets/js/12.5bb27aab.js"><link rel="prefetch" href="/vuepressblog/assets/js/13.32e29e7c.js"><link rel="prefetch" href="/vuepressblog/assets/js/14.e55b7723.js"><link rel="prefetch" href="/vuepressblog/assets/js/15.c48607a3.js"><link rel="prefetch" href="/vuepressblog/assets/js/16.13390870.js"><link rel="prefetch" href="/vuepressblog/assets/js/17.a9804fd8.js"><link rel="prefetch" href="/vuepressblog/assets/js/18.fb69bfc4.js"><link rel="prefetch" href="/vuepressblog/assets/js/20.dbd1ca3b.js"><link rel="prefetch" href="/vuepressblog/assets/js/21.ee3561c0.js"><link rel="prefetch" href="/vuepressblog/assets/js/22.c22d9c1f.js"><link rel="prefetch" href="/vuepressblog/assets/js/23.723547f5.js"><link rel="prefetch" href="/vuepressblog/assets/js/24.943528ad.js"><link rel="prefetch" href="/vuepressblog/assets/js/25.8e9479ce.js"><link rel="prefetch" href="/vuepressblog/assets/js/26.74984b33.js"><link rel="prefetch" href="/vuepressblog/assets/js/27.75f1fdf2.js"><link rel="prefetch" href="/vuepressblog/assets/js/28.1b6276c0.js"><link rel="prefetch" href="/vuepressblog/assets/js/29.05639df4.js"><link rel="prefetch" href="/vuepressblog/assets/js/30.2681940d.js"><link rel="prefetch" href="/vuepressblog/assets/js/31.f9efb1b1.js"><link rel="prefetch" href="/vuepressblog/assets/js/32.a0d9a399.js"><link rel="prefetch" href="/vuepressblog/assets/js/34.f0a698fd.js"><link rel="prefetch" href="/vuepressblog/assets/js/35.0e326130.js"><link rel="prefetch" href="/vuepressblog/assets/js/36.b2b3e253.js"><link rel="prefetch" href="/vuepressblog/assets/js/37.dd62db9e.js"><link rel="prefetch" href="/vuepressblog/assets/js/38.913cb853.js"><link rel="prefetch" href="/vuepressblog/assets/js/39.da58299e.js"><link rel="prefetch" href="/vuepressblog/assets/js/40.9e9dbe74.js"><link rel="prefetch" href="/vuepressblog/assets/js/41.1e5d174b.js"><link rel="prefetch" href="/vuepressblog/assets/js/42.98e5b36e.js"><link rel="prefetch" href="/vuepressblog/assets/js/43.e9700734.js"><link rel="prefetch" href="/vuepressblog/assets/js/44.b0a52867.js"><link rel="prefetch" href="/vuepressblog/assets/js/45.917fb9ad.js"><link rel="prefetch" href="/vuepressblog/assets/js/46.7ae1c785.js"><link rel="prefetch" href="/vuepressblog/assets/js/47.7fcebcc8.js"><link rel="prefetch" href="/vuepressblog/assets/js/48.93cbe66a.js"><link rel="prefetch" href="/vuepressblog/assets/js/49.1f223744.js"><link rel="prefetch" href="/vuepressblog/assets/js/50.ba92012e.js"><link rel="prefetch" href="/vuepressblog/assets/js/51.aca7b354.js"><link rel="prefetch" href="/vuepressblog/assets/js/52.0f5d4489.js"><link rel="prefetch" href="/vuepressblog/assets/js/53.226d4ff8.js"><link rel="prefetch" href="/vuepressblog/assets/js/54.1043b0ae.js"><link rel="prefetch" href="/vuepressblog/assets/js/55.92853640.js"><link rel="prefetch" href="/vuepressblog/assets/js/56.82cc33e1.js"><link rel="prefetch" href="/vuepressblog/assets/js/57.745ad1d3.js"><link rel="prefetch" href="/vuepressblog/assets/js/58.b7ff50c2.js"><link rel="prefetch" href="/vuepressblog/assets/js/59.7d8351c4.js"><link rel="prefetch" href="/vuepressblog/assets/js/6.d725240a.js"><link rel="prefetch" href="/vuepressblog/assets/js/60.2aebe209.js"><link rel="prefetch" href="/vuepressblog/assets/js/61.9430581b.js"><link rel="prefetch" href="/vuepressblog/assets/js/62.7044ccf3.js"><link rel="prefetch" href="/vuepressblog/assets/js/63.3c095a98.js"><link rel="prefetch" href="/vuepressblog/assets/js/64.346faedd.js"><link rel="prefetch" href="/vuepressblog/assets/js/65.afbf1f2a.js"><link rel="prefetch" href="/vuepressblog/assets/js/66.17696ab9.js"><link rel="prefetch" href="/vuepressblog/assets/js/7.805ae2fb.js"><link rel="prefetch" href="/vuepressblog/assets/js/8.13496340.js"><link rel="prefetch" href="/vuepressblog/assets/js/9.8e8e790b.js"><link rel="prefetch" href="/vuepressblog/assets/js/vendors~flowchart.e4db18a3.js">
+    <link rel="stylesheet" href="/vuepressblog/assets/css/0.styles.7ed2eb0c.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div><div class="theme-container" data-v-0b87bb44><div data-v-0b87bb44><div id="loader-wrapper" class="loading-wrapper" data-v-4b73742e data-v-0b87bb44 data-v-0b87bb44><div class="loader-main" data-v-4b73742e><div data-v-4b73742e></div><div data-v-4b73742e></div><div data-v-4b73742e></div><div data-v-4b73742e></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-73c95a87 data-v-0b87bb44 data-v-0b87bb44><h3 class="title" style="display:none;" data-v-73c95a87 data-v-73c95a87>Zpeng</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-73c95a87 data-v-73c95a87><input type="password" value="" data-v-73c95a87> <span data-v-73c95a87>Konck! Knock!</span> <button data-v-73c95a87>OK</button></label> <div class="footer" style="display:none;" data-v-73c95a87 data-v-73c95a87><span data-v-73c95a87><i class="iconfont reco-theme" data-v-73c95a87></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-73c95a87>vuePress-theme-reco</a></span> <span data-v-73c95a87><i class="iconfont reco-copyright" data-v-73c95a87></i> <a data-v-73c95a87><span data-v-73c95a87>Zpeng</span>
+            
+          <!---->
+          2020
+        </a></span></div></div> <div class="hide" data-v-0b87bb44><header class="navbar" data-v-0b87bb44><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/vuepressblog/" class="home-link router-link-active"><img src="/vuepressblog/vuepress/head-fish.jpg" alt="Zpeng" class="logo"> <span class="site-name">Zpeng</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/vuepressblog/index.html" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/面试题/" class="nav-link"><i class="iconfont undefined"></i>
+  面试题
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/后端/" class="nav-link"><i class="iconfont undefined"></i>
+  后端
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/工具/" class="nav-link"><i class="iconfont undefined"></i>
+  工具
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/数据库/" class="nav-link"><i class="iconfont undefined"></i>
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/分享/" class="nav-link"><i class="iconfont undefined"></i>
+  分享
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/娱乐/" class="nav-link"><i class="iconfont undefined"></i>
+  娱乐
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/前端/" class="nav-link"><i class="iconfont undefined"></i>
+  前端
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/myblog/" class="nav-link"><i class="iconfont undefined"></i>
+  myblog
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/算法/" class="nav-link"><i class="iconfont undefined"></i>
+  算法
+</a></li></ul></div></div><div class="nav-item"><a href="/vuepressblog/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-document"></i>
+      其它
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>Github</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://github.com/zhangpengpeng69" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  My Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></li><li class="dropdown-item"><h4>Others</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://www.zhangpeng.fun/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  halo blog
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-subitem"><a href="https://zpengit.github.io/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  hexo blog
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-subitem"><a href="https://github.com/zhangpengpeng69/ZPeng-s-Blog" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  github blog
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-subitem"><a href="https://zhangpengpeng69.github.io/vuepressblog/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  vuepress blog
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></li></ul></div></div><div class="nav-item"><a href="/vuepressblog/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间线
+</a></div><div class="nav-item"><a href="/vuepressblog/about/" class="nav-link"><i class="iconfont reco-message"></i>
+  关于我
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-0b87bb44></div> <aside class="sidebar" data-v-0b87bb44><div class="personal-info-wrapper" data-v-7e653f02><img src="/vuepressblog/vuepress/head-fish.jpg" alt="author-avatar" class="personal-img" data-v-7e653f02> <h3 class="name" data-v-7e653f02>
+    Zpeng
+  </h3> <div class="num" data-v-7e653f02><div data-v-7e653f02><h3 data-v-7e653f02>36</h3> <h6 data-v-7e653f02>文章</h6></div> <div data-v-7e653f02><h3 data-v-7e653f02>33</h3> <h6 data-v-7e653f02>标签</h6></div></div> <hr data-v-7e653f02></div> <nav class="nav-links"><div class="nav-item"><a href="/vuepressblog/index.html" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/面试题/" class="nav-link"><i class="iconfont undefined"></i>
+  面试题
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/后端/" class="nav-link"><i class="iconfont undefined"></i>
+  后端
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/工具/" class="nav-link"><i class="iconfont undefined"></i>
+  工具
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/数据库/" class="nav-link"><i class="iconfont undefined"></i>
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/分享/" class="nav-link"><i class="iconfont undefined"></i>
+  分享
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/娱乐/" class="nav-link"><i class="iconfont undefined"></i>
+  娱乐
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/前端/" class="nav-link"><i class="iconfont undefined"></i>
+  前端
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/myblog/" class="nav-link"><i class="iconfont undefined"></i>
+  myblog
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/算法/" class="nav-link"><i class="iconfont undefined"></i>
+  算法
+</a></li></ul></div></div><div class="nav-item"><a href="/vuepressblog/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-document"></i>
+      其它
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>Github</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://github.com/zhangpengpeng69" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  My Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></li><li class="dropdown-item"><h4>Others</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://www.zhangpeng.fun/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  halo blog
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-subitem"><a href="https://zpengit.github.io/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  hexo blog
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-subitem"><a href="https://github.com/zhangpengpeng69/ZPeng-s-Blog" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  github blog
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-subitem"><a href="https://zhangpengpeng69.github.io/vuepressblog/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  vuepress blog
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></li></ul></div></div><div class="nav-item"><a href="/vuepressblog/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间线
+</a></div><div class="nav-item"><a href="/vuepressblog/about/" class="nav-link"><i class="iconfont reco-message"></i>
+  关于我
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>SPRING 框架核心进阶</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6%E6%A0%B8%E5%BF%83%E8%BF%9B%E9%98%B6.html#_1-1-spring-框架架构分析" class="sidebar-link">1.1.SPRING 框架架构分析</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6%E6%A0%B8%E5%BF%83%E8%BF%9B%E9%98%B6.html#_1-1-1-spring-框架应用架构" class="sidebar-link">1.1.1.Spring 框架应用架构</a></li></ul></li><li><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6%E6%A0%B8%E5%BF%83%E8%BF%9B%E9%98%B6.html#image-png-http-www-zhangpeng-fun-upload-2019-12-image-d92bfc62abae4b1abbc7a002da599370-png" class="sidebar-link">!image.png</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6%E6%A0%B8%E5%BF%83%E8%BF%9B%E9%98%B6.html#_1-1-2-spring-框架产品架构" class="sidebar-link">1.1.2. Spring 框架产品架构</a></li></ul></li><li><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6%E6%A0%B8%E5%BF%83%E8%BF%9B%E9%98%B6.html#-2" class="sidebar-link">!image.png</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6%E6%A0%B8%E5%BF%83%E8%BF%9B%E9%98%B6.html#_1-1-3-spring-框架技术架构" class="sidebar-link">1.1.3.Spring 框架技术架构</a></li></ul></li><li><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6%E6%A0%B8%E5%BF%83%E8%BF%9B%E9%98%B6.html#_1-2-spring框架快速实践-注解方式-脱离文档" class="sidebar-link">1.2.SPRING框架快速实践 (注解方式-脱离文档)</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6%E6%A0%B8%E5%BF%83%E8%BF%9B%E9%98%B6.html#_1-2-1-spring项目创建及配置" class="sidebar-link">1.2.1.Spring项目创建及配置</a></li><li class="sidebar-sub-header"><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6%E6%A0%B8%E5%BF%83%E8%BF%9B%E9%98%B6.html#_1-2-2-spring基本测试环境创建" class="sidebar-link">1.2.2.Spring基本测试环境创建</a></li><li class="sidebar-sub-header"><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6%E6%A0%B8%E5%BF%83%E8%BF%9B%E9%98%B6.html#_1-2-3-spring项目基本业务实现" class="sidebar-link">1.2.3.Spring项目基本业务实现</a></li><li class="sidebar-sub-header"><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6%E6%A0%B8%E5%BF%83%E8%BF%9B%E9%98%B6.html#_1-2-4-spring项目课堂练习分析及实现" class="sidebar-link">1.2.4.Spring项目课堂练习分析及实现</a></li></ul></li><li><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6%E6%A0%B8%E5%BF%83%E8%BF%9B%E9%98%B6.html#_1-3-spring-ioc-应用原理进阶分析" class="sidebar-link">1.3.SPRING IOC 应用原理进阶分析</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6%E6%A0%B8%E5%BF%83%E8%BF%9B%E9%98%B6.html#_1-3-1-spring-ioc设计思想分析" class="sidebar-link">1.3.1.Spring IOC设计思想分析</a></li><li class="sidebar-sub-header"><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6%E6%A0%B8%E5%BF%83%E8%BF%9B%E9%98%B6.html#_1-3-2-spring-bean-工厂的初始化" class="sidebar-link">1.3.2.Spring Bean 工厂的初始化</a></li><li class="sidebar-sub-header"><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6%E6%A0%B8%E5%BF%83%E8%BF%9B%E9%98%B6.html#_1-3-3-spring-中的两大map对象分析" class="sidebar-link">1.3.3.Spring 中的两大map对象分析</a></li></ul></li><li><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6%E6%A0%B8%E5%BF%83%E8%BF%9B%E9%98%B6.html#-3" class="sidebar-link">!image.png</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6%E6%A0%B8%E5%BF%83%E8%BF%9B%E9%98%B6.html#-4" class="sidebar-link">!image.png</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6%E6%A0%B8%E5%BF%83%E8%BF%9B%E9%98%B6.html#_1-3-4-spring-中两大bean对象分析-了解" class="sidebar-link">1.3.4.Spring 中两大bean对象分析(了解)</a></li></ul></li><li><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6%E6%A0%B8%E5%BF%83%E8%BF%9B%E9%98%B6.html#-5" class="sidebar-link">!image.png</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6%E6%A0%B8%E5%BF%83%E8%BF%9B%E9%98%B6.html#_1-3-5-spring-中两大bean对象描述方式" class="sidebar-link">1.3.5.Spring 中两大bean对象描述方式</a></li></ul></li><li><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6%E6%A0%B8%E5%BF%83%E8%BF%9B%E9%98%B6.html#_1-1-spring-依赖注入实践增强" class="sidebar-link">1.1.Spring 依赖注入实践增强</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6%E6%A0%B8%E5%BF%83%E8%BF%9B%E9%98%B6.html#_1-1-1-spring-中bean对象依赖注入分析-重点" class="sidebar-link">1.1.1.Spring 中Bean对象依赖注入分析(重点)</a></li></ul></li><li><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6%E6%A0%B8%E5%BF%83%E8%BF%9B%E9%98%B6.html#-6" class="sidebar-link">!image.png</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6%E6%A0%B8%E5%BF%83%E8%BF%9B%E9%98%B6.html#_1-1-2-spring-中bean对象依赖注入实践" class="sidebar-link">1.1.2.Spring 中Bean对象依赖注入实践</a></li></ul></li></ul></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-73c95a87 data-v-0b87bb44><h3 class="title" style="display:none;" data-v-73c95a87 data-v-73c95a87>SPRING 框架核心进阶</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-73c95a87 data-v-73c95a87><input type="password" value="" data-v-73c95a87> <span data-v-73c95a87>Konck! Knock!</span> <button data-v-73c95a87>OK</button></label> <div class="footer" style="display:none;" data-v-73c95a87 data-v-73c95a87><span data-v-73c95a87><i class="iconfont reco-theme" data-v-73c95a87></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-73c95a87>vuePress-theme-reco</a></span> <span data-v-73c95a87><i class="iconfont reco-copyright" data-v-73c95a87></i> <a data-v-73c95a87><span data-v-73c95a87>Zpeng</span>
+            
+          <!---->
+          2020
+        </a></span></div></div> <div data-v-0b87bb44><main class="page"><!----> <div class="page-title" style="display:none;"><h1>SPRING 框架核心进阶</h1> <hr> <div data-v-7b2e794a><i class="iconfont reco-account" data-v-7b2e794a><span data-v-7b2e794a>Zpeng</span></i> <i class="iconfont reco-date" data-v-7b2e794a><span data-v-7b2e794a>2020-03-21 16:00:47</span></i> <i class="iconfont reco-eye" data-v-7b2e794a><span id="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6%E6%A0%B8%E5%BF%83%E8%BF%9B%E9%98%B6.html" data-flag-title="Your Article Title" class="leancloud-visitors" data-v-7b2e794a><a class="leancloud-visitors-count" style="font-size:.9rem;font-weight:normal;color:#999;"></a></span></i> <i class="iconfont reco-tag tags" data-v-7b2e794a><span class="tag-item" data-v-7b2e794a>
+      java
+    </span></i></div></div> <div class="theme-reco-content content__default" style="display:none;"><h1 id="_1-spring-框架核心进阶"><a href="#_1-spring-框架核心进阶" class="header-anchor">#</a> 1.SPRING 框架核心进阶</h1> <h2 id="_1-1-spring-框架架构分析"><a href="#_1-1-spring-框架架构分析" class="header-anchor">#</a> 1.1.SPRING 框架架构分析</h2> <h3 id="_1-1-1-spring-框架应用架构"><a href="#_1-1-1-spring-框架应用架构" class="header-anchor">#</a> 1.1.1.Spring 框架应用架构</h3> <hr> <p>Spring 官网资源:spring.io/projects
+Spring 是一个”资源整合”框架,通过spring可将很多资源(例如连接池,
+mybatis,...)等整合在一起,对外提供相关服务(例如,秒杀服务,支付服务,...)。</p> <hr> <h2 id=""><a href="#" class="header-anchor">#</a> <img src="http://www.zhangpeng.fun/upload/2019/12/image-d92bfc62abae4b1abbc7a002da599370.png" alt="image.png"></h2> <p>说明:spring 框架中一切资源的整合都源于IOC模块，IOC要实现对象生命周期的管理，对象依赖关系的管理。</p> <h3 id="_1-1-2-spring-框架产品架构"><a href="#_1-1-2-spring-框架产品架构" class="header-anchor">#</a> 1.1.2. Spring 框架产品架构</h3> <hr> <p>产品架构主要从这个框架对外提供的服务（功能）进行理解.</p> <hr> <h2 id="-2"><a href="#-2" class="header-anchor">#</a> <img src="http://www.zhangpeng.fun/upload/2019/12/image-9dbc108b167f467ca8b895cd29288f64.png" alt="image.png"></h2> <h3 id="_1-1-3-spring-框架技术架构"><a href="#_1-1-3-spring-框架技术架构" class="header-anchor">#</a> 1.1.3.Spring 框架技术架构</h3> <p>IOC API基础架构(Spring 工厂对象分析)</p> <hr> <p><img src="http://www.zhangpeng.fun/upload/2019/12/image-96662d4783ed4306993deb401bac9c8b.png" alt="image.png">
+IOC(控制反转) 容器初始化过程分析.</p> <hr> <p><img src="http://www.zhangpeng.fun/upload/2019/12/image-92dc43a7d1364ae694bd834ebf80e959.png" alt="image.png"></p> <h2 id="_1-2-spring框架快速实践-注解方式-脱离文档"><a href="#_1-2-spring框架快速实践-注解方式-脱离文档" class="header-anchor">#</a> 1.2.SPRING框架快速实践 (注解方式-脱离文档)</h2> <h3 id="_1-2-1-spring项目创建及配置"><a href="#_1-2-1-spring项目创建及配置" class="header-anchor">#</a> 1.2.1.Spring项目创建及配置</h3> <p>1.创建maven项目(jar包项目)
+1)项目名称 CGB-SPRING-01
+2)组id:com.cy
+3)打包方式:jar</p> <p>2.添加项目依赖(spring-context)</p> <p>添加spring依赖</p> <div class="language- extra-class"><pre><code>   &lt;dependency&gt;
+	&lt;groupId&gt;org.springframework&lt;/groupId&gt;
+	&lt;artifactId&gt;spring-context&lt;/artifactId&gt;
+	&lt;version&gt;5.1.9.RELEASE&lt;/version&gt;
+   &lt;/dependency&gt;
+</code></pre></div><p>添加junit依赖</p> <div class="language- extra-class"><pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;junit&lt;/groupId&gt;
+  &lt;artifactId&gt;junit&lt;/artifactId&gt;
+  &lt;version&gt;4.12&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre></div><h3 id="_1-2-2-spring基本测试环境创建"><a href="#_1-2-2-spring基本测试环境创建" class="header-anchor">#</a> 1.2.2.Spring基本测试环境创建</h3> <p>添加spring配置类(SpringConfig)</p> <div class="language- extra-class"><pre><code>package com.cy.spring.config;
+import org.springframework.context.annotation.ComponentScan;
+/**
+ * @ComponentScan 用于告诉spring容器从
+   * 从指定包进行bean的扫描
+ */
+@ComponentScan(&quot;com.cy.spring.beans&quot;)
+public class SpringConfig {//spring-configs.xml
+
+}
+</code></pre></div><p>定义测试基类</p> <div class="language- extra-class"><pre><code>package com.spring;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+public class TestBase {
+	 protected AnnotationConfigApplicationContext ctx;
+	 @Before
+	 public void init() {
+	  ctx=new AnnotationConfigApplicationContext(
+				 SpringConfig.class);
+	 }
+	 @After
+	 public void close() {
+		 ctx.close();
+	 }
+	 @Test
+	 public void testCtx() {
+		 System.out.println(ctx);
+	 }
+}
+</code></pre></div><h3 id="_1-2-3-spring项目基本业务实现"><a href="#_1-2-3-spring项目基本业务实现" class="header-anchor">#</a> 1.2.3.Spring项目基本业务实现</h3> <p>业务描述,创建一个DefaultCache对象然后将此对象交给Spring容器管理.
+创建DefaultCache类,并明确此类交给spring管理.</p> <div class="language- extra-class"><pre><code>package com.cy.spring.beans;
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+/**
+@Component 注解用于告诉spring容器
+请将这个类交给spring管理.
+@Lazy 用于告诉spring容器此对象要延迟加载
+@Scope 用于告诉spring容器此bean的作用域
+1)singleton (单例作用域-默认,会存储到池中)
+2)prototype (多例作用域,每次获取都创建新对象)
+ */
+@Lazy
+@Scope(&quot;singleton&quot;) 
+@Component //@Controller,@Service,...
+public class DefaultCache {
+	 public DefaultCache() {
+		 System.out.println(&quot;DefaultCache()&quot;);
+	 }
+	 @PostConstruct //告诉spring 此对象初始化时执行init方法
+	 public void init() {
+		 System.out.println(&quot;init()&quot;);
+	 }
+	 @PreDestroy//告诉spring 此对象销毁时执行close方法
+	 public void close() {
+		 System.out.println(&quot;close()&quot;);
+	 }
+}
+</code></pre></div><p>定义测试类,从spring容器中获取bean对象</p> <div class="language- extra-class"><pre><code>package com.cy.test;
+import org.junit.Assert;
+import org.junit.Test;
+import com.cy.spring.beans.DefaultCache;
+public class TestCache extends TestBase {
+	@Test
+	public void testDefaultCahce() {
+		DefaultCache cache01=
+		ctx.getBean(&quot;defaultCache&quot;,DefaultCache.class);
+		Assert.assertNotEquals(null, cache01);
+		DefaultCache cache02=
+		ctx.getBean(&quot;defaultCache&quot;,DefaultCache.class);
+		Assert.assertNotEquals(null, cache02);
+		System.out.println(cache01==cache02);
+	}
+}
+</code></pre></div><h3 id="_1-2-4-spring项目课堂练习分析及实现"><a href="#_1-2-4-spring项目课堂练习分析及实现" class="header-anchor">#</a> 1.2.4.Spring项目课堂练习分析及实现</h3> <p>1.整合第三方连接池DRUID.
+1)步骤分析:
+step01:添加依赖(数据库驱动依赖,连接池依赖)
+step02:对druid连接池进行配置
+step03:对连接池进行单元测试.
+2)关键代码实现</p> <p>添加mysql依赖</p> <div class="language- extra-class"><pre><code>&lt;dependency&gt;
+	&lt;groupId&gt;mysql&lt;/groupId&gt;
+	&lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+	&lt;version&gt;8.0.17&lt;/version&gt;
+ &lt;/dependency&gt;
+</code></pre></div><p>添加Druid依赖</p> <div class="language- extra-class"><pre><code>  &lt;dependency&gt;
+	&lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+	&lt;artifactId&gt;druid&lt;/artifactId&gt;
+	&lt;version&gt;1.1.19&lt;/version&gt;
+  &lt;/dependency&gt;
+</code></pre></div><p>定义数据源配置类</p> <div class="language- extra-class"><pre><code>package com.cy.spring.beans;
+import javax.sql.DataSource;
+@Configuration
+public class DataSourceConfig {
+	  @Bean(value=&quot;druid&quot;,initMethod=&quot;init&quot;,destroyMethod=&quot;close&quot;)
+	  public DataSource newDruid() {
+		 // System.out.println(&quot;newDruid()&quot;);
+		  DruidDataSource ds=new DruidDataSource();
+		  //ds.setDriverClassName(&quot;com.mysql.cj.jdbc.Driver&quot;);
+		  ds.setUrl(&quot;jdbc:mysql:///test?serverTimezone=GMT&quot;);
+		  ds.setUsername(&quot;root&quot;);
+		  ds.setPassword(&quot;root&quot;);
+		  ds.setMaxWait(10000);
+		  //....
+		  return ds;
+	  }	  
+}
+</code></pre></div><p>创建单元测试类</p> <div class="language- extra-class"><pre><code>package com.cy.test;
+import javax.sql.DataSource;
+import org.junit.Assert;
+import org.junit.Test;
+import com.zaxxer.hikari.HikariDataSource;
+public class TestDataSource extends TestBase{
+	@Test
+	public void testDruidDataSource()throws Exception {
+		DataSource ds=
+		ctx.getBean(&quot;druid&quot;,DataSource.class);
+		Assert.assertNotEquals(null, ds);
+		System.out.println(ds.getConnection());
+	}
+}
+</code></pre></div><h1 id="_2-整合第三方连接池hikaricp连接池-扩展"><a href="#_2-整合第三方连接池hikaricp连接池-扩展" class="header-anchor">#</a> 2.整合第三方连接池HiKariCP连接池(扩展).</h1> <h2 id="_1-3-spring-ioc-应用原理进阶分析"><a href="#_1-3-spring-ioc-应用原理进阶分析" class="header-anchor">#</a> 1.3.SPRING IOC 应用原理进阶分析</h2> <h3 id="_1-3-1-spring-ioc设计思想分析"><a href="#_1-3-1-spring-ioc设计思想分析" class="header-anchor">#</a> 1.3.1.Spring IOC设计思想分析</h3> <p>IOC 是一种设计思想，称之为控制反转。基于这种思想实现对象创建，对象的科学管理以及应用时的解耦(借助DI机制实现)。Spring框架核心就是基于这种机制进行了完美实现。
+说明：
+1)控制反转探讨的是什么？谁控制谁的问题（spring控制对象的创建管理）
+2)生活中的IOC的实现？(例如股票操盘手,父母包办婚姻）</p> <h3 id="_1-3-2-spring-bean-工厂的初始化"><a href="#_1-3-2-spring-bean-工厂的初始化" class="header-anchor">#</a> 1.3.2.Spring Bean 工厂的初始化</h3> <p>基于xml方式实现Spring中Bean工厂的初始化.</p> <hr> <p><img src="http://www.zhangpeng.fun/upload/2019/12/image-630cb3fbad434155b03166a0ec10b184.png" alt="image.png">
+说明:Spring 中的Bean工厂会基于Bean对象描述,创建bean的实例,并可以有选择性的对实例对象进行管理(例如单例作用域的对象).</p> <h3 id="_1-3-3-spring-中的两大map对象分析"><a href="#_1-3-3-spring-中的两大map对象分析" class="header-anchor">#</a> 1.3.3.Spring 中的两大map对象分析</h3> <p>1.如何理解Spring中的两大map对象(存储对象的两个容器)？
+1）一个map用于存储bean的配置信息(工厂的原材料)
+2）一个map用于存储bean的实例信息(工厂中的成品对象)</p> <p>基于xml配置文件实现:</p> <hr> <h2 id="-3"><a href="#-3" class="header-anchor">#</a> <img src="http://www.zhangpeng.fun/upload/2019/12/image-c49b3bb717964a3189411cc5c0387a3f.png" alt="image.png"></h2> <p>基于注解配置实现:</p> <hr> <h2 id="-4"><a href="#-4" class="header-anchor">#</a> <img src="http://www.zhangpeng.fun/upload/2019/12/image-1e18b43a520043d681eea9e4a79a5f7e.png" alt="image.png"></h2> <h3 id="_1-3-4-spring-中两大bean对象分析-了解"><a href="#_1-3-4-spring-中两大bean对象分析-了解" class="header-anchor">#</a> 1.3.4.Spring 中两大bean对象分析(了解)</h3> <p>Bean对象创建
+1)未实现FactoryBean接口(直接构造方法);
+2)实现FactoryBean接口（调用FactoryBean对象的getObject方法）</p> <hr> <h2 id="-5"><a href="#-5" class="header-anchor">#</a> <img src="http://www.zhangpeng.fun/upload/2019/12/image-5bdbf2e837434d1eabb4a2ddc7c838e2.png" alt="image.png"></h2> <p>说明：一般在创建一些相对复杂的工厂对象时，通常会写一个工厂bean对象，
+然后基于工厂bean对象创建具体的工厂对象，例如SqlSessionFactoryBean,
+ShiroFilterFactoryBean，ProxyFactoryBean等。</p> <h3 id="_1-3-5-spring-中两大bean对象描述方式"><a href="#_1-3-5-spring-中两大bean对象描述方式" class="header-anchor">#</a> 1.3.5.Spring 中两大bean对象描述方式</h3> <p>Bean 对象的描述
+1)xml方式 (例如<bean id="”factory”" class="”com.beans.Factory”">)
+2)annotation方式（@Service,@Controller，@Configuration，@Bean，..）</bean></p> <p>Spring 中用于描述这是一个Bean对象的相关注解如下:</p> <hr> <p><img src="http://www.zhangpeng.fun/upload/2019/12/image-ec7bdf52e7324e209438f176a87a0527.png" alt="image.png">
+说明:无论使用如上图中的哪个注解对Bean进行描述,对Spring而言都认为是一样的Bean.</p> <h2 id="_1-1-spring-依赖注入实践增强"><a href="#_1-1-spring-依赖注入实践增强" class="header-anchor">#</a> 1.1.Spring 依赖注入实践增强</h2> <h3 id="_1-1-1-spring-中bean对象依赖注入分析-重点"><a href="#_1-1-1-spring-中bean对象依赖注入分析-重点" class="header-anchor">#</a> 1.1.1.Spring 中Bean对象依赖注入分析(重点)</h3> <p>依赖注入(DI)是一种设计思想,简单点就是对象通过set或构造方法直接为对象属性赋值,在Spring框架中为这种注入基于反射技术提供一种自动实现方式.例如:</p> <p>IOC 依赖注入在项目中的应用实现：</p> <hr> <h2 id="-6"><a href="#-6" class="header-anchor">#</a> <img src="http://www.zhangpeng.fun/upload/2019/12/image-8effc442fbba466fbdf7b27016a7bab9.png" alt="image.png"></h2> <p>实际项目中为了解耦和,对象之间通常会通过接口进行通讯,也就是
+说对象要耦合与接口,例如2</p> <hr> <p><img src="http://www.zhangpeng.fun/upload/2019/12/image-aa073ba90cc446a3ab1018da3c585284.png" alt="image.png"></p> <p>个人认为：IOC的核心是对象生命周期管理(资源管理)以及
+依赖注入（资源协同）；</p> <h3 id="_1-1-2-spring-中bean对象依赖注入实践"><a href="#_1-1-2-spring-中bean对象依赖注入实践" class="header-anchor">#</a> 1.1.2.Spring 中Bean对象依赖注入实践</h3> <p>在1.2小节基础上,基于如下设计,进行代码实践分析及实现。</p> <hr> <p><img src="http://www.zhangpeng.fun/upload/2019/12/image-31a98667ce2d4cd89c0896f59d297459.png" alt="image.png"></p> <p>核心步骤分析：
+Step01:创建Cache接口以及对应的实现DefaultCache
+Step02:创建SearchService接口以及对应的实现类。
+Step03:将DefaultCache对象注入给DefaultSearchService。
+Step03:创建SynchronizedCache测试@Autowired注解。</p> <p>关键代码分析及实现：</p> <p>Cache接口定义</p> <div class="language- extra-class"><pre><code>public interface Cache {
+
+}
+</code></pre></div><p>DefaultCache类定义</p> <div class="language- extra-class"><pre><code>@Lazy
+@Component
+public class DefaultCache implements Cache{
+	public DefaultCache() {
+		System.out.println(&quot;DefaultCache()&quot;);
+	}
+}
+</code></pre></div><p>SynchronizedCache定义</p> <div class="language- extra-class"><pre><code>@Component
+public class SynchronizedCache implements Cache {
+
+}
+</code></pre></div><p>SearchService接口定义</p> <div class="language- extra-class"><pre><code>public interface SearchService {
+
+}
+</code></pre></div><p>SearchService实现类定义</p> <div class="language- extra-class"><pre><code>@Service
+public class DefaultSearchService implements SearchService {
+	/**@Autowired 可以修饰属性，set方法，构造方法等
+	 * 默认按照属性类型，方法参数类型为对象属性注入值,
+	 * 假如相同类型的对象有多个，还会按属性名或方法参
+	 * 数名等进行查找。
+	 * @Qualifier 配合@Autowired，用于指定要注入的对
+	 * 象的名字。
+	 */
+	@Autowired
+	@Qualifier(&quot;defaultCache&quot;)
+	private Cache cache;
+	@Override
+	public  String toString() {
+		return &quot;DefaultSearchService [cache=&quot; + cache + &quot;]&quot;;
+	}
+}
+</code></pre></div><p>测试实现</p> <div class="language- extra-class"><pre><code>public class TestSearchService extends TestBase {
+	@Test
+	public void testSearchService() {
+		DefaultSearchService ds=
+		ctx.getBean(&quot;defaultSearchService&quot;,
+				DefaultSearchService.class);
+		System.out.println(ds);
+	}
+}
+</code></pre></div><h1 id="少年易老学难成，一寸光阴不可轻。"><a href="#少年易老学难成，一寸光阴不可轻。" class="header-anchor">#</a> 少年易老学难成，一寸光阴不可轻。</h1></div> <footer class="page-edit" style="display:none;"><!----> <!----></footer> <!----> <!----></main> <!----> <div class="comments-wrapper" data-v-0b87bb44><div class="valine-wrapper"><div id="valine"></div></div></div></div></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-a81d141e data-v-a81d141e><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-a81d141e><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-a81d141e></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-a81d141e></path></svg></div><!----><div data-v-48108b4c><div class="DetailsOpenFlag" style="right:1rem;bottom:9rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;font-size:14px;font-weight:500;display:none;" data-v-48108b4c>
+ 展开 
+
+</div></div><div id="musicPlayer" data-v-361f21ca><!----> <div class="bbox" data-v-361f21ca><div class="pan" style="background-image:url(/vuepressblog/assets/img/pan.07613e22.png);" data-v-361f21ca><img src="" alt class="pan_c" data-v-361f21ca></div> <div class="box" style="background-image:url();" data-v-361f21ca><div class="music_shlter_2" style="background-image:url();" data-v-361f21ca></div> <div class="music_shlter" style="background-image:url();" data-v-361f21ca></div> <div class="music_shlter_3" data-v-361f21ca></div> <div class="music_dis" data-v-361f21ca><div class="dis_list" data-v-361f21ca>···</div> <p class="music_title" data-v-361f21ca></p> <p class="music_intro" data-v-361f21ca>歌手: </p> <ul class="music_words" data-v-361f21ca><div class="music_words_box" style="top:0px;" data-v-361f21ca></div></ul></div> <div class="control_box" data-v-361f21ca><div class="control_button" data-v-361f21ca><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHAAAACMCAYAAACksC0pAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALjSURBVHhe7doxbuswFETRSG68pVTZ+y+SJdmVE/GDC0hzBxnynoqpBGhIaoy84/vyBnu9Xv9ut9vH/HN5j8fj836/v88/Mc/n8+uca9RxHPgm2VUkwN2kNux4TiTA65Y+5nIL53m+5hI1nuMJLGeAgKu0xW42AwQEiv1/10bJBLhhC0198z2BBFtoueUC3I0BlkvdOLZQyGiHc4myhXJsoc2CG9YWSkgFeJ6nJYZgCy1nCy23XIC7tVBPYL/YhjVAwGiHc4mK/Uc+daX8FbZQ/YrfQEhqpGIwQEDqkzE2SiTA3X5GJHkCAcuVmN1aqIO95ZIb1gABqQD9GQG5XuxcsRyp4KSuUE8gwRZabrkAd2OA5Wyh5Rzs7WcLbRbcsLZQQipAB3shttByttByywW4Wwv1BPaLbVgDBDjYW84WWs5vYLnkjWOAgFSADvYuwBMISG1YWyhkvNi5RNlCIZaYcqkAx3MMEHC92LliOVLBSV2hnkBCasPGSowtlGELLWeAEFtoOQd7+9lCmwU3rC2UkApwjG54AgGpAG2hEFtoueUC3K2FegL7xTasAQJGO5xLlCMVEFtoOb+B5ZI3jgECUgE62LsATyAgtWFtoRBHKspZYsqlAhzPMUDA9WLniuVIBSd1hXoCCakNGysxtlCGLbScAUJsoeUc7O1nC20W3LC2UEIqwDG64QkEpAK0hUJsoeWWC3C3FuoJ7BfbsAYIGO1wLlGOVEBsoeX8BpZL3jgGCEgF6GDvAjyBgOVKzG4tNDVSEfsZsRtLTLlUgOM5Bgi4XuxcsRyp4KSuUE8gwRZabrkAd2OA5Wyh5Rzs7WcLbRbcsLZQQipAB3shttByttByywW4Wwv1BPaLbVgDBDjYW84Wql/xGwgZ85pziTNAQOqT4WDvAjyBgOVKzG4t1MHecskNa4CAVID+jIBcL3auWI5UcFJXqCeQYAstt1yAuzHAcrbQcg729rOFNstt2LfvHxY+GuRFc4rhAAAAAElFTkSuQmCC" alt class="control_icon" data-v-361f21ca></div> <div class="progress" data-v-361f21ca><div class="progress_c" style="width:0%;" data-v-361f21ca><div class="progress_circle" data-v-361f21ca><div class="progress_circle_c" data-v-361f21ca></div></div></div></div></div></div> <video id="music" autoplay="autoplay" src="" name="media" data-v-361f21ca></video></div></div></div></div>
+    <script src="/vuepressblog/assets/js/app.7e150cda.js" defer></script><script src="/vuepressblog/assets/js/5.77d6a875.js" defer></script><script src="/vuepressblog/assets/js/1.09091223.js" defer></script><script src="/vuepressblog/assets/js/2.aca3c302.js" defer></script><script src="/vuepressblog/assets/js/33.6cb36c5d.js" defer></script><script src="/vuepressblog/assets/js/19.d519ea0a.js" defer></script>
+  </body>
+</html>

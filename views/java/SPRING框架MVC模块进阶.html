@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>SPRING 框架MVC模块进阶 | Zpeng</title>
+    <meta name="generator" content="VuePress 1.4.1">
+    <link rel="icon" href="https://infinitypro-img.infinitynewtab.com/custom-icon/8001de1jd3n68lbfnxxt564xvb0vl5.png?imageMogr2/thumbnail/240x/format/webp/blur/1x0/quality/100|imageslim">
+    <script language="javascript" type="text/javascript" src="https://cdn.staticfile.org/jquery/1.7.2/jquery.min.js"></script>
+    <script language="javascript" type="text/javascript" src="/vuepressblog/js/MouseClickEffect.js"></script>
+    <meta name="description" content="可以分享的不仅仅只有技术！">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <link rel="preload" href="/vuepressblog/assets/css/0.styles.7ed2eb0c.css" as="style"><link rel="preload" href="/vuepressblog/assets/js/app.7e150cda.js" as="script"><link rel="preload" href="/vuepressblog/assets/js/5.77d6a875.js" as="script"><link rel="preload" href="/vuepressblog/assets/js/1.09091223.js" as="script"><link rel="preload" href="/vuepressblog/assets/js/2.aca3c302.js" as="script"><link rel="preload" href="/vuepressblog/assets/js/32.a0d9a399.js" as="script"><link rel="preload" href="/vuepressblog/assets/js/19.d519ea0a.js" as="script"><link rel="prefetch" href="/vuepressblog/assets/js/10.32dcd315.js"><link rel="prefetch" href="/vuepressblog/assets/js/11.9163a9d8.js"><link rel="prefetch" href="/vuepressblog/assets/js/12.5bb27aab.js"><link rel="prefetch" href="/vuepressblog/assets/js/13.32e29e7c.js"><link rel="prefetch" href="/vuepressblog/assets/js/14.e55b7723.js"><link rel="prefetch" href="/vuepressblog/assets/js/15.c48607a3.js"><link rel="prefetch" href="/vuepressblog/assets/js/16.13390870.js"><link rel="prefetch" href="/vuepressblog/assets/js/17.a9804fd8.js"><link rel="prefetch" href="/vuepressblog/assets/js/18.fb69bfc4.js"><link rel="prefetch" href="/vuepressblog/assets/js/20.dbd1ca3b.js"><link rel="prefetch" href="/vuepressblog/assets/js/21.ee3561c0.js"><link rel="prefetch" href="/vuepressblog/assets/js/22.c22d9c1f.js"><link rel="prefetch" href="/vuepressblog/assets/js/23.723547f5.js"><link rel="prefetch" href="/vuepressblog/assets/js/24.943528ad.js"><link rel="prefetch" href="/vuepressblog/assets/js/25.8e9479ce.js"><link rel="prefetch" href="/vuepressblog/assets/js/26.74984b33.js"><link rel="prefetch" href="/vuepressblog/assets/js/27.75f1fdf2.js"><link rel="prefetch" href="/vuepressblog/assets/js/28.1b6276c0.js"><link rel="prefetch" href="/vuepressblog/assets/js/29.05639df4.js"><link rel="prefetch" href="/vuepressblog/assets/js/30.2681940d.js"><link rel="prefetch" href="/vuepressblog/assets/js/31.f9efb1b1.js"><link rel="prefetch" href="/vuepressblog/assets/js/33.6cb36c5d.js"><link rel="prefetch" href="/vuepressblog/assets/js/34.f0a698fd.js"><link rel="prefetch" href="/vuepressblog/assets/js/35.0e326130.js"><link rel="prefetch" href="/vuepressblog/assets/js/36.b2b3e253.js"><link rel="prefetch" href="/vuepressblog/assets/js/37.dd62db9e.js"><link rel="prefetch" href="/vuepressblog/assets/js/38.913cb853.js"><link rel="prefetch" href="/vuepressblog/assets/js/39.da58299e.js"><link rel="prefetch" href="/vuepressblog/assets/js/40.9e9dbe74.js"><link rel="prefetch" href="/vuepressblog/assets/js/41.1e5d174b.js"><link rel="prefetch" href="/vuepressblog/assets/js/42.98e5b36e.js"><link rel="prefetch" href="/vuepressblog/assets/js/43.e9700734.js"><link rel="prefetch" href="/vuepressblog/assets/js/44.b0a52867.js"><link rel="prefetch" href="/vuepressblog/assets/js/45.917fb9ad.js"><link rel="prefetch" href="/vuepressblog/assets/js/46.7ae1c785.js"><link rel="prefetch" href="/vuepressblog/assets/js/47.7fcebcc8.js"><link rel="prefetch" href="/vuepressblog/assets/js/48.93cbe66a.js"><link rel="prefetch" href="/vuepressblog/assets/js/49.1f223744.js"><link rel="prefetch" href="/vuepressblog/assets/js/50.ba92012e.js"><link rel="prefetch" href="/vuepressblog/assets/js/51.aca7b354.js"><link rel="prefetch" href="/vuepressblog/assets/js/52.0f5d4489.js"><link rel="prefetch" href="/vuepressblog/assets/js/53.226d4ff8.js"><link rel="prefetch" href="/vuepressblog/assets/js/54.1043b0ae.js"><link rel="prefetch" href="/vuepressblog/assets/js/55.92853640.js"><link rel="prefetch" href="/vuepressblog/assets/js/56.82cc33e1.js"><link rel="prefetch" href="/vuepressblog/assets/js/57.745ad1d3.js"><link rel="prefetch" href="/vuepressblog/assets/js/58.b7ff50c2.js"><link rel="prefetch" href="/vuepressblog/assets/js/59.7d8351c4.js"><link rel="prefetch" href="/vuepressblog/assets/js/6.d725240a.js"><link rel="prefetch" href="/vuepressblog/assets/js/60.2aebe209.js"><link rel="prefetch" href="/vuepressblog/assets/js/61.9430581b.js"><link rel="prefetch" href="/vuepressblog/assets/js/62.7044ccf3.js"><link rel="prefetch" href="/vuepressblog/assets/js/63.3c095a98.js"><link rel="prefetch" href="/vuepressblog/assets/js/64.346faedd.js"><link rel="prefetch" href="/vuepressblog/assets/js/65.afbf1f2a.js"><link rel="prefetch" href="/vuepressblog/assets/js/66.17696ab9.js"><link rel="prefetch" href="/vuepressblog/assets/js/7.805ae2fb.js"><link rel="prefetch" href="/vuepressblog/assets/js/8.13496340.js"><link rel="prefetch" href="/vuepressblog/assets/js/9.8e8e790b.js"><link rel="prefetch" href="/vuepressblog/assets/js/vendors~flowchart.e4db18a3.js">
+    <link rel="stylesheet" href="/vuepressblog/assets/css/0.styles.7ed2eb0c.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div><div class="theme-container" data-v-0b87bb44><div data-v-0b87bb44><div id="loader-wrapper" class="loading-wrapper" data-v-4b73742e data-v-0b87bb44 data-v-0b87bb44><div class="loader-main" data-v-4b73742e><div data-v-4b73742e></div><div data-v-4b73742e></div><div data-v-4b73742e></div><div data-v-4b73742e></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-73c95a87 data-v-0b87bb44 data-v-0b87bb44><h3 class="title" style="display:none;" data-v-73c95a87 data-v-73c95a87>Zpeng</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-73c95a87 data-v-73c95a87><input type="password" value="" data-v-73c95a87> <span data-v-73c95a87>Konck! Knock!</span> <button data-v-73c95a87>OK</button></label> <div class="footer" style="display:none;" data-v-73c95a87 data-v-73c95a87><span data-v-73c95a87><i class="iconfont reco-theme" data-v-73c95a87></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-73c95a87>vuePress-theme-reco</a></span> <span data-v-73c95a87><i class="iconfont reco-copyright" data-v-73c95a87></i> <a data-v-73c95a87><span data-v-73c95a87>Zpeng</span>
+            
+          <!---->
+          2020
+        </a></span></div></div> <div class="hide" data-v-0b87bb44><header class="navbar" data-v-0b87bb44><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/vuepressblog/" class="home-link router-link-active"><img src="/vuepressblog/vuepress/head-fish.jpg" alt="Zpeng" class="logo"> <span class="site-name">Zpeng</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/vuepressblog/index.html" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/面试题/" class="nav-link"><i class="iconfont undefined"></i>
+  面试题
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/后端/" class="nav-link"><i class="iconfont undefined"></i>
+  后端
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/工具/" class="nav-link"><i class="iconfont undefined"></i>
+  工具
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/数据库/" class="nav-link"><i class="iconfont undefined"></i>
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/分享/" class="nav-link"><i class="iconfont undefined"></i>
+  分享
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/娱乐/" class="nav-link"><i class="iconfont undefined"></i>
+  娱乐
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/前端/" class="nav-link"><i class="iconfont undefined"></i>
+  前端
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/myblog/" class="nav-link"><i class="iconfont undefined"></i>
+  myblog
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/算法/" class="nav-link"><i class="iconfont undefined"></i>
+  算法
+</a></li></ul></div></div><div class="nav-item"><a href="/vuepressblog/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-document"></i>
+      其它
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>Github</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://github.com/zhangpengpeng69" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  My Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></li><li class="dropdown-item"><h4>Others</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://www.zhangpeng.fun/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  halo blog
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-subitem"><a href="https://zpengit.github.io/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  hexo blog
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-subitem"><a href="https://github.com/zhangpengpeng69/ZPeng-s-Blog" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  github blog
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-subitem"><a href="https://zhangpengpeng69.github.io/vuepressblog/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  vuepress blog
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></li></ul></div></div><div class="nav-item"><a href="/vuepressblog/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间线
+</a></div><div class="nav-item"><a href="/vuepressblog/about/" class="nav-link"><i class="iconfont reco-message"></i>
+  关于我
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-0b87bb44></div> <aside class="sidebar" data-v-0b87bb44><div class="personal-info-wrapper" data-v-7e653f02><img src="/vuepressblog/vuepress/head-fish.jpg" alt="author-avatar" class="personal-img" data-v-7e653f02> <h3 class="name" data-v-7e653f02>
+    Zpeng
+  </h3> <div class="num" data-v-7e653f02><div data-v-7e653f02><h3 data-v-7e653f02>36</h3> <h6 data-v-7e653f02>文章</h6></div> <div data-v-7e653f02><h3 data-v-7e653f02>33</h3> <h6 data-v-7e653f02>标签</h6></div></div> <hr data-v-7e653f02></div> <nav class="nav-links"><div class="nav-item"><a href="/vuepressblog/index.html" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/面试题/" class="nav-link"><i class="iconfont undefined"></i>
+  面试题
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/后端/" class="nav-link"><i class="iconfont undefined"></i>
+  后端
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/工具/" class="nav-link"><i class="iconfont undefined"></i>
+  工具
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/数据库/" class="nav-link"><i class="iconfont undefined"></i>
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/分享/" class="nav-link"><i class="iconfont undefined"></i>
+  分享
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/娱乐/" class="nav-link"><i class="iconfont undefined"></i>
+  娱乐
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/前端/" class="nav-link"><i class="iconfont undefined"></i>
+  前端
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/myblog/" class="nav-link"><i class="iconfont undefined"></i>
+  myblog
+</a></li><li class="dropdown-item"><!----> <a href="/vuepressblog/categories/算法/" class="nav-link"><i class="iconfont undefined"></i>
+  算法
+</a></li></ul></div></div><div class="nav-item"><a href="/vuepressblog/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-document"></i>
+      其它
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>Github</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://github.com/zhangpengpeng69" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  My Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></li><li class="dropdown-item"><h4>Others</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://www.zhangpeng.fun/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  halo blog
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-subitem"><a href="https://zpengit.github.io/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  hexo blog
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-subitem"><a href="https://github.com/zhangpengpeng69/ZPeng-s-Blog" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  github blog
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-subitem"><a href="https://zhangpengpeng69.github.io/vuepressblog/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont undefined"></i>
+  vuepress blog
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></li></ul></div></div><div class="nav-item"><a href="/vuepressblog/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间线
+</a></div><div class="nav-item"><a href="/vuepressblog/about/" class="nav-link"><i class="iconfont reco-message"></i>
+  关于我
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>SPRING 框架MVC模块进阶</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6MVC%E6%A8%A1%E5%9D%97%E8%BF%9B%E9%98%B6.html#_2-1-spring-mvc-设计思想" class="sidebar-link">2.1.Spring MVC 设计思想</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6MVC%E6%A8%A1%E5%9D%97%E8%BF%9B%E9%98%B6.html#_2-1-1-spring-mvc-设计思想分析" class="sidebar-link">2.1.1.Spring MVC 设计思想分析</a></li></ul></li><li><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6MVC%E6%A8%A1%E5%9D%97%E8%BF%9B%E9%98%B6.html#image-png-http-www-zhangpeng-fun-upload-2019-12-image-7a786784d3ca41f4946261f296b671bd-png" class="sidebar-link">!image.png</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6MVC%E6%A8%A1%E5%9D%97%E8%BF%9B%E9%98%B6.html#_2-1-2-spring-mvc-核心对象及流程分析" class="sidebar-link">2.1.2.Spring MVC 核心对象及流程分析</a></li></ul></li><li><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6MVC%E6%A8%A1%E5%9D%97%E8%BF%9B%E9%98%B6.html#-2" class="sidebar-link">!image.png</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6MVC%E6%A8%A1%E5%9D%97%E8%BF%9B%E9%98%B6.html#_2-2-spring-mvc-快速实践" class="sidebar-link">2.2.Spring MVC 快速实践</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6MVC%E6%A8%A1%E5%9D%97%E8%BF%9B%E9%98%B6.html#_2-2-1-xml方式配置实现-脱离文档" class="sidebar-link">2.2.1.xml方式配置实现(脱离文档)</a></li><li class="sidebar-sub-header"><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6MVC%E6%A8%A1%E5%9D%97%E8%BF%9B%E9%98%B6.html#_2-2-2-注解方式配置实现（脱离文档）" class="sidebar-link">2.2.2.注解方式配置实现（脱离文档）</a></li></ul></li><li><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6MVC%E6%A8%A1%E5%9D%97%E8%BF%9B%E9%98%B6.html#-3" class="sidebar-link">!image.png</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6MVC%E6%A8%A1%E5%9D%97%E8%BF%9B%E9%98%B6.html#-4" class="sidebar-link">!image.png</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6MVC%E6%A8%A1%E5%9D%97%E8%BF%9B%E9%98%B6.html#_2-3-spring-mvc-请求响应处理增强分析" class="sidebar-link">2.3.Spring MVC 请求响应处理增强分析</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6MVC%E6%A8%A1%E5%9D%97%E8%BF%9B%E9%98%B6.html#_2-3-1-请求处理增强分析及实现-重点" class="sidebar-link">2.3.1.请求处理增强分析及实现(重点)</a></li><li class="sidebar-sub-header"><a href="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6MVC%E6%A8%A1%E5%9D%97%E8%BF%9B%E9%98%B6.html#_2-3-2-响应处理增强分析实现（重点）" class="sidebar-link">2.3.2.响应处理增强分析实现（重点）</a></li></ul></li></ul></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-73c95a87 data-v-0b87bb44><h3 class="title" style="display:none;" data-v-73c95a87 data-v-73c95a87>SPRING 框架MVC模块进阶</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-73c95a87 data-v-73c95a87><input type="password" value="" data-v-73c95a87> <span data-v-73c95a87>Konck! Knock!</span> <button data-v-73c95a87>OK</button></label> <div class="footer" style="display:none;" data-v-73c95a87 data-v-73c95a87><span data-v-73c95a87><i class="iconfont reco-theme" data-v-73c95a87></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-73c95a87>vuePress-theme-reco</a></span> <span data-v-73c95a87><i class="iconfont reco-copyright" data-v-73c95a87></i> <a data-v-73c95a87><span data-v-73c95a87>Zpeng</span>
+            
+          <!---->
+          2020
+        </a></span></div></div> <div data-v-0b87bb44><main class="page"><!----> <div class="page-title" style="display:none;"><h1>SPRING 框架MVC模块进阶</h1> <hr> <div data-v-7b2e794a><i class="iconfont reco-account" data-v-7b2e794a><span data-v-7b2e794a>Zpeng</span></i> <i class="iconfont reco-date" data-v-7b2e794a><span data-v-7b2e794a>2020-03-22 16:00:47</span></i> <i class="iconfont reco-eye" data-v-7b2e794a><span id="/vuepressblog/views/java/SPRING%E6%A1%86%E6%9E%B6MVC%E6%A8%A1%E5%9D%97%E8%BF%9B%E9%98%B6.html" data-flag-title="Your Article Title" class="leancloud-visitors" data-v-7b2e794a><a class="leancloud-visitors-count" style="font-size:.9rem;font-weight:normal;color:#999;"></a></span></i> <i class="iconfont reco-tag tags" data-v-7b2e794a><span class="tag-item" data-v-7b2e794a>
+      java
+    </span></i></div></div> <div class="theme-reco-content content__default" style="display:none;"><h1 id="_2-spring-框架mvc模块进阶"><a href="#_2-spring-框架mvc模块进阶" class="header-anchor">#</a> 2.SPRING 框架MVC模块进阶</h1> <h2 id="_2-1-spring-mvc-设计思想"><a href="#_2-1-spring-mvc-设计思想" class="header-anchor">#</a> 2.1.Spring MVC 设计思想</h2> <h3 id="_2-1-1-spring-mvc-设计思想分析"><a href="#_2-1-1-spring-mvc-设计思想分析" class="header-anchor">#</a> 2.1.1.Spring MVC 设计思想分析</h3> <p>MVC是一种分层架构设计思想，目的是基于对象职责上的不同，进行分层设计，实现各司其职，各尽所能，以提高代码的可维护性，可扩展性。
+1)生活中的MVC:正规饭店(菜单,服务员,厨师)
+2)程序中的MVC:(html,jsp)/servlet/(service,dao))</p> <hr> <h2 id=""><a href="#" class="header-anchor">#</a> <img src="http://www.zhangpeng.fun/upload/2019/12/image-7a786784d3ca41f4946261f296b671bd.png" alt="image.png"></h2> <p>SPRING MVC是Spring 框架中的一个WEB模块, 是基于MVC设思想的一种完美实现。</p> <h3 id="_2-1-2-spring-mvc-核心对象及流程分析"><a href="#_2-1-2-spring-mvc-核心对象及流程分析" class="header-anchor">#</a> 2.1.2.Spring MVC 核心对象及流程分析</h3> <p>Spring MVC 处理流程及其核心组件对象构成，如下图所示：</p> <hr> <h2 id="-2"><a href="#-2" class="header-anchor">#</a> <img src="http://www.zhangpeng.fun/upload/2019/12/image-349c5b35210b4a4b9bb0991a02d335bc.png" alt="image.png"></h2> <p>FAQ：说说spring MVC中的核心组件？
+1)DipatcherServlet:前端控制器(web服务器启动时加载)
+2)HandlerMapping:注册中心(负责存储url到后端控制器的映射)
+3)HandlerInterceptor:拦截器(请求到handler之间的拦截)
+4)Handler:后端处理器(又称之为Controller)
+5)ViewResolver:视图解析器(负责是视图页面进行解析)</p> <h2 id="_2-2-spring-mvc-快速实践"><a href="#_2-2-spring-mvc-快速实践" class="header-anchor">#</a> 2.2.Spring MVC 快速实践</h2> <h3 id="_2-2-1-xml方式配置实现-脱离文档"><a href="#_2-2-1-xml方式配置实现-脱离文档" class="header-anchor">#</a> 2.2.1.xml方式配置实现(脱离文档)</h3> <p>1.创建maven项目</p> <p>1)项目名称: CGB-SPRINGMVC-01
+2)组id: com.cy
+3)打包方式: war包方式</p> <p>2.配置并初始化项目环境</p> <p>1)生成web.xml(配置spring mvc 前端控制器)
+2)设置项目的运行时环境(选择tomcat,提供servlet支持)
+3)设置项目编码方式 utf-8
+4)设置统一编译环境 JDK8
+5)添加项目依赖:spring-webmvc
+6)添加spring mvc配置文件并进行配置:spring-configs.xml
+7)web.xml中配置spring mvc前端控制器(DispatcherServlet)
+8)部署项目,启动tomcat测试 (假如tomcat正常启动,则没问题)</p> <p>说明:如上配置可参考后面内容中的关键代码分享.</p> <p>3.Spring MVC基础业务实现</p> <p>1)定义Controller类
+a)包名:com.cy.pj.search.controller
+b)类名:SearchController</p> <p>代码如下:</p> <div class="language- extra-class"><pre><code>@Controller
+@RequestMapping(&quot;/search/&quot;)
+public class SearchController {
+}
+</code></pre></div><p>其中:@RequestMapping修饰类时用于定义请求路径</p> <p>2)添加Controller方法
+方法1:此方法用于向客户端返回一个页面</p> <div class="language- extra-class"><pre><code>@RequestMapping(&quot;doSearchUI&quot;)
+public String doSearchUI() {
+return &quot;search&quot;;
+}
+</code></pre></div><p>其中:对于返回值search需要在/WEB-INF/pages/目录下有对应的
+search.html页面.</p> <p>方法2:此方法用于向客户端返回一个json格式的字符串</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">&quot;doSearch&quot;</span><span class="token punctuation">)</span>
+	<span class="token annotation punctuation">@ResponseBody</span>
+	<span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">doSearch</span><span class="token punctuation">(</span><span class="token class-name">String</span> key<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span><span class="token class-name">Object</span><span class="token punctuation">&gt;</span></span> map<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span><span class="token class-name">Object</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">&quot;state&quot;</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">&quot;message&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;hello everyone&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">return</span> map<span class="token punctuation">;</span><span class="token comment">//{&quot;state&quot;:1,&quot;message&quot;:&quot;hello everyone&quot;}</span>
+	<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>其中:
+a)@ResponseBody修饰方法时,Spring MVC可以将方法的返回值以指定格式进行进行输出,例如JSON格式字符串.
+b)doSearch方法进行测试时,需要在项目中添加如下依赖:</p> <div class="language- extra-class"><pre><code>&lt;dependency&gt;
+	&lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;
+	&lt;artifactId&gt;jackson-databind&lt;/artifactId&gt;
+	&lt;version&gt;2.9.9.3&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre></div><p>3)部署并启动服务测试.</p> <p>4.关键代码分享:</p> <p>spring-configs.xml</p> <div class="language- extra-class"><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+	xmlns:mvc=&quot;http://www.springframework.org/schema/mvc&quot;
+	xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+	xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+	xsi:schemaLocation=&quot;
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc.xsd&quot;&gt;
+
+	&lt;context:component-scan base-package=&quot;com.cy.controller&quot;/&gt;
+	&lt;!-- Enable MVC Configuration:启用默认bean对象(注解驱动)  --&gt;
+	&lt;mvc:annotation-driven/&gt;
+	&lt;!-- 启用 DefaultServletHttpRequestHandler对静态进行处理 --&gt;
+	&lt;mvc:default-servlet-handler/&gt;
+	&lt;!-- 配置视图解析器(ViewResolver)对象 --&gt;
+	&lt;bean id=&quot;viewResolver&quot;  class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;&gt;
+	   &lt;!-- Set DI (默认找对象中的set方法)--&gt;
+	   &lt;property name=&quot;Prefix&quot; value=&quot;/WEB-INF/pages/&quot;/&gt;
+	   &lt;property name=&quot;Suffix&quot; value=&quot;.html&quot;/&gt;
+	&lt;/bean&gt;
+&lt;/beans&gt;
+</code></pre></div><p>Web.xml</p> <div class="language- extra-class"><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;web-app xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns=&quot;http://java.sun.com/xml/ns/javaee&quot; xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd&quot; version=&quot;2.5&quot;&gt;
+  &lt;display-name&gt;CGB-SPRINGMVC-01&lt;/display-name&gt;
+  &lt;!-- 配置前端控制器 --&gt;
+  &lt;servlet&gt;
+	&lt;servlet-name&gt;frontController&lt;/servlet-name&gt;
+	&lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;
+	&lt;init-param&gt;
+		&lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+		&lt;param-value&gt;classpath:spring-configs.xml&lt;/param-value&gt;
+	&lt;/init-param&gt;
+	&lt;!-- tomcat 启动时则初始化servlet,数字越小优先级越高 --&gt;
+	&lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+  &lt;/servlet&gt;
+  &lt;servlet-mapping&gt;
+	 &lt;servlet-name&gt;frontController&lt;/servlet-name&gt;
+	 &lt;url-pattern&gt;/&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
+&lt;/web-app&gt;
+</code></pre></div><p>SearchController</p> <div class="language- extra-class"><pre><code>package com.cy.pj.search.controller;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+@Controller 
+@RequestMapping(&quot;/search/&quot;) 
+public class SearchController {
+	@RequestMapping(&quot;doSearchUI&quot;)
+	public String doSearchUI() {
+		return &quot;search&quot;;
+	}///WEB-INF/pages/search.html
+
+	@RequestMapping(&quot;doSearch&quot;)
+	@ResponseBody
+	public Object doSearch(String key) {
+		Map&lt;String,Object&gt; map=new HashMap&lt;String,Object&gt;();
+		map.put(&quot;state&quot;, 1);
+		map.put(&quot;message&quot;,&quot;hello everyone&quot;);
+		return map;//{&quot;state&quot;:1,&quot;message&quot;:&quot;hello everyone&quot;}
+	}
+}
+</code></pre></div><h3 id="_2-2-2-注解方式配置实现（脱离文档）"><a href="#_2-2-2-注解方式配置实现（脱离文档）" class="header-anchor">#</a> 2.2.2.注解方式配置实现（脱离文档）</h3> <p>Tomcat 启动加载方式:</p> <hr> <h2 id="-3"><a href="#-3" class="header-anchor">#</a> <img src="http://www.zhangpeng.fun/upload/2019/12/image-20db542cf104453c8a8451787821bda0.png" alt="image.png"></h2> <p>1.创建maven项目</p> <p>1)项目名称: CGB-SPRINGMVC-02
+2)组id: com.cy
+3)打包方式: war包方式</p> <p>2.配置并初始化项目环境(重点对xml方式进行重构)</p> <p>1)配置maven war包插件(忽略web.xml)
+2)设置项目的运行时环境(选择tomcat)
+3)设置项目编码方式 utf-8
+4)设置统一编译环境 JDK8
+5)添加项目依赖:spring-webmvc
+6)添加spring mvc配置类:SpringWebConfig类
+7)创建WebInitializer类配置spring mvc(例如前端控制器)。
+8)部署项目,启动tomcat测试 (假如tomcat正常启动,则没问题)</p> <p>3.Spring MVC基础业务实现 (参考xml方式业务代码实现)</p> <p>4.Spring mvc 注解方式应用分析:</p> <hr> <h2 id="-4"><a href="#-4" class="header-anchor">#</a> <img src="http://www.zhangpeng.fun/upload/2019/12/image-de958697c6d948dda4e45ae287c18496.png" alt="image.png"></h2> <p>其中META-INF目录可在sping-web.jar中进行查看.</p> <p>关键代码分析:</p> <p>SpringWebConfig类</p> <div class="language- extra-class"><pre><code>@Configuration 
+@ComponentScan(&quot;com.cy.pj.search.controller&quot;)
+@EnableWebMvc //&lt;mvc:annotation-driven/&gt;
+public class SpringWebConfig implements WebMvcConfigurer{
+	//&lt;mvc:default-servlet-handler/&gt;
+	@Override
+	public void configureDefaultServletHandling(
+			DefaultServletHandlerConfigurer configurer) {
+		configurer.enable();
+	}
+	@Override
+	public void configureViewResolvers(
+		ViewResolverRegistry registry) {
+		registry.jsp(&quot;/WEB-INF/pages/&quot;,&quot;.html&quot;);
+	}
+}
+</code></pre></div><p>WebInitializer类</p> <div class="language- extra-class"><pre><code>public class WebInitializer extends 
+AbstractAnnotationConfigDispatcherServletInitializer {
+
+	//Service,Repository
+	@Override
+	protected Class&lt;?&gt;[] getRootConfigClasses() {
+		System.out.println(&quot;getRootConfigClasses()&quot;);
+		return null;
+	}
+	//View,Controller
+	@Override
+	protected Class&lt;?&gt;[] getServletConfigClasses() {
+		System.out.println(&quot;getServletConfigClasses()&quot;);
+		return new Class[] {SpringWebConfig.class};
+	}
+	@Override
+	protected String[] getServletMappings() {
+		System.out.println(&quot;getServletMappings()&quot;);
+		return new String[] {&quot;/&quot;};
+	}
+}
+</code></pre></div><h2 id="_2-3-spring-mvc-请求响应处理增强分析"><a href="#_2-3-spring-mvc-请求响应处理增强分析" class="header-anchor">#</a> 2.3.Spring MVC 请求响应处理增强分析</h2> <p>所有MVC框架的重点都在请求和响应数据的处理上。</p> <h3 id="_2-3-1-请求处理增强分析及实现-重点"><a href="#_2-3-1-请求处理增强分析及实现-重点" class="header-anchor">#</a> 2.3.1.请求处理增强分析及实现(重点)</h3> <p>Spring MVC请求处理主要从如下几个方面进行考虑：
+1)请求路径(普通方式，rest方式) ：404
+2)请求方式(Get请求，Post请求,…):405
+3)请求参数(直接量，POJO对象，MAP对象):400</p> <p>代码分析如下：</p> <div class="language- extra-class"><pre><code>@Controller
+@RequestMapping(&quot;/request/&quot;)
+public class RequestHandleController {
+	 //===请求url定义 
+	  //普通URL定义实现(多个url可以对应同一个资源)
+	  @RequestMapping(value={&quot;doHandleUrl&quot;,&quot;doWelcomeUI&quot;})
+	  public String doHandleUrl() {
+		 return &quot;welcome&quot;; 
+	  }
+	  //REST风格的URL，其url格式为{a}/{b}/{c}
+	  //假如希望方法参数获取url中{}表达式内部的值
+	  //可以使用@PathVariable对参数进行修饰
+	  @RequestMapping(&quot;{module}/{page}&quot;)
+	  public String doMoudleUrl(
+			  @PathVariable String module,
+			  @PathVariable String page) {
+		 return module+&quot;/&quot;+page;
+	  }
+	  //===请求方式定义
+	  //@RequestMapping(value=&quot;type&quot;,method=RequestMethod.GET)
+	  @GetMapping(&quot;type&quot;)
+	  //@PostMapping(&quot;type&quot;)
+	  @ResponseBody
+	  public String doRequestType() {
+		  return &quot;request type&quot;;
+	  }
+	  //=====请求参数处理======
+	  @GetMapping(&quot;param&quot;)
+	  @ResponseBody
+	  public String doRequestParam(
+			 RequestWrapper rw,//pojo
+			 @RequestParam(required=false) String msg,
+			 @DateTimeFormat(pattern=&quot;yyyy/MM/dd&quot;)Date begin) {
+		  return &quot;request parameter handle msg=&quot;+msg+&quot;,begin=&quot;+begin+&quot;,rw=&quot;+rw.toString();
+	  }
+}
+</code></pre></div><h3 id="_2-3-2-响应处理增强分析实现（重点）"><a href="#_2-3-2-响应处理增强分析实现（重点）" class="header-anchor">#</a> 2.3.2.响应处理增强分析实现（重点）</h3> <p>Spring MVC响应处理主要从如下几个方面进行考虑：
+1）响应方式(转发forward，重定向redirect)
+2）响应数据封装(ModelAndView,Model,Map,Pojo)
+3）响应数据转换（将对象序列化为JSON格式字符串）</p> <p>代码分析如下：</p> <div class="language- extra-class"><pre><code>@Controller
+@RequestMapping(&quot;/resp/&quot;)
+public class ResponseHandleController {
+	 @RequestMapping(&quot;doResponseUI&quot;)
+	 public String doResponseUI() {
+		 return &quot;response&quot;;
+	 }
+	 @RequestMapping(&quot;type&quot;)
+	 public String doResponseType() {
+		 //转发(客户端请求一次)
+		 return &quot;forward:doResponseUI&quot;;//address
+		 //重定向(客户端两次请求)
+		 //return &quot;redirect:doResponseUI&quot;;//address
+	 }
+
+	 @RequestMapping(&quot;doDataConvert&quot;)
+	 @ResponseBody
+	 public String doDataConvert()throws Exception {
+		 Map&lt;String,Object&gt; map=new HashMap&lt;String,Object&gt;();
+		 map.put(&quot;id&quot;, 100);
+		 map.put(&quot;msg&quot;, &quot;hello jackson&quot;);
+		 //借助jackson中的API将对象转换json格式的字符串
+		 ObjectMapper om=new ObjectMapper();
+		 return om.writeValueAsString(map);
+	 }
+}
+</code></pre></div><h1 id="少年易老学难成，一寸光阴不可轻。"><a href="#少年易老学难成，一寸光阴不可轻。" class="header-anchor">#</a> 少年易老学难成，一寸光阴不可轻。</h1></div> <footer class="page-edit" style="display:none;"><!----> <!----></footer> <!----> <!----></main> <!----> <div class="comments-wrapper" data-v-0b87bb44><div class="valine-wrapper"><div id="valine"></div></div></div></div></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-a81d141e data-v-a81d141e><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-a81d141e><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-a81d141e></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-a81d141e></path></svg></div><!----><div data-v-48108b4c><div class="DetailsOpenFlag" style="right:1rem;bottom:9rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;font-size:14px;font-weight:500;display:none;" data-v-48108b4c>
+ 展开 
+
+</div></div><div id="musicPlayer" data-v-361f21ca><!----> <div class="bbox" data-v-361f21ca><div class="pan" style="background-image:url(/vuepressblog/assets/img/pan.07613e22.png);" data-v-361f21ca><img src="" alt class="pan_c" data-v-361f21ca></div> <div class="box" style="background-image:url();" data-v-361f21ca><div class="music_shlter_2" style="background-image:url();" data-v-361f21ca></div> <div class="music_shlter" style="background-image:url();" data-v-361f21ca></div> <div class="music_shlter_3" data-v-361f21ca></div> <div class="music_dis" data-v-361f21ca><div class="dis_list" data-v-361f21ca>···</div> <p class="music_title" data-v-361f21ca></p> <p class="music_intro" data-v-361f21ca>歌手: </p> <ul class="music_words" data-v-361f21ca><div class="music_words_box" style="top:0px;" data-v-361f21ca></div></ul></div> <div class="control_box" data-v-361f21ca><div class="control_button" data-v-361f21ca><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHAAAACMCAYAAACksC0pAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALjSURBVHhe7doxbuswFETRSG68pVTZ+y+SJdmVE/GDC0hzBxnynoqpBGhIaoy84/vyBnu9Xv9ut9vH/HN5j8fj836/v88/Mc/n8+uca9RxHPgm2VUkwN2kNux4TiTA65Y+5nIL53m+5hI1nuMJLGeAgKu0xW42AwQEiv1/10bJBLhhC0198z2BBFtoueUC3I0BlkvdOLZQyGiHc4myhXJsoc2CG9YWSkgFeJ6nJYZgCy1nCy23XIC7tVBPYL/YhjVAwGiHc4mK/Uc+daX8FbZQ/YrfQEhqpGIwQEDqkzE2SiTA3X5GJHkCAcuVmN1aqIO95ZIb1gABqQD9GQG5XuxcsRyp4KSuUE8gwRZabrkAd2OA5Wyh5Rzs7WcLbRbcsLZQQipAB3shttByttByywW4Wwv1BPaLbVgDBDjYW84WWs5vYLnkjWOAgFSADvYuwBMISG1YWyhkvNi5RNlCIZaYcqkAx3MMEHC92LliOVLBSV2hnkBCasPGSowtlGELLWeAEFtoOQd7+9lCmwU3rC2UkApwjG54AgGpAG2hEFtoueUC3K2FegL7xTasAQJGO5xLlCMVEFtoOb+B5ZI3jgECUgE62LsATyAgtWFtoRBHKspZYsqlAhzPMUDA9WLniuVIBSd1hXoCCakNGysxtlCGLbScAUJsoeUc7O1nC20W3LC2UEIqwDG64QkEpAK0hUJsoeWWC3C3FuoJ7BfbsAYIGO1wLlGOVEBsoeX8BpZL3jgGCEgF6GDvAjyBgOVKzG4tNDVSEfsZsRtLTLlUgOM5Bgi4XuxcsRyp4KSuUE8gwRZabrkAd2OA5Wyh5Rzs7WcLbRbcsLZQQipAB3shttByttByywW4Wwv1BPaLbVgDBDjYW84Wql/xGwgZ85pziTNAQOqT4WDvAjyBgOVKzG4t1MHecskNa4CAVID+jIBcL3auWI5UcFJXqCeQYAstt1yAuzHAcrbQcg729rOFNstt2LfvHxY+GuRFc4rhAAAAAElFTkSuQmCC" alt class="control_icon" data-v-361f21ca></div> <div class="progress" data-v-361f21ca><div class="progress_c" style="width:0%;" data-v-361f21ca><div class="progress_circle" data-v-361f21ca><div class="progress_circle_c" data-v-361f21ca></div></div></div></div></div></div> <video id="music" autoplay="autoplay" src="" name="media" data-v-361f21ca></video></div></div></div></div>
+    <script src="/vuepressblog/assets/js/app.7e150cda.js" defer></script><script src="/vuepressblog/assets/js/5.77d6a875.js" defer></script><script src="/vuepressblog/assets/js/1.09091223.js" defer></script><script src="/vuepressblog/assets/js/2.aca3c302.js" defer></script><script src="/vuepressblog/assets/js/32.a0d9a399.js" defer></script><script src="/vuepressblog/assets/js/19.d519ea0a.js" defer></script>
+  </body>
+</html>
